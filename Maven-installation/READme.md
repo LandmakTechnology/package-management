@@ -33,7 +33,9 @@ sudo wget https://dlcdn.apache.org/maven/maven-3/3.8.3/binaries/apache-maven-3.8
 sudo unzip apache-maven-3.8.3-bin.zip
 sudo rm -rf apache-maven-3.8.3-bin.zip
 sudo mv apache-maven-3.8.3/ maven
-#Step3) Set Environmental Variable  - For Specific User eg ec2-user
+```
+## 2.#Step3) Set Environmental Variable  - For Specific User eg ec2-user
+``` sh
 echo "export M2_HOME=/opt/maven" >>  ~/.bashrc
 echo "export PATH=$PATH:$M2_HOME/bin" >> ~/.bashrc
 source ~/.bashrc
