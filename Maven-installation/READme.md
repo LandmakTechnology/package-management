@@ -13,7 +13,7 @@
 + Attach Security Group to EC2 Instance.
 + Install java openJDK 1.8+
 
-### Install Java JDK 1.8+ 
+### Install Java JDK 1.8+  and other softares (GIT, wget and tree)
 
 ``` sh
 # install Java JDK 1.8+ as a pre-requisit for maven to run.
