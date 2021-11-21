@@ -40,5 +40,6 @@ echo "export M2_HOME=/opt/maven" >>  ~/.bashrc
 echo "export PATH=$PATH:$M2_HOME/bin" >> ~/.bashrc
 source ~/.bashrc
 mvn -version
+#
 
 ```
