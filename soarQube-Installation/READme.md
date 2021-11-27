@@ -41,7 +41,7 @@ sudo rm -rf sonarqube-7.8.zip
 sudo mv sonarqube-7.8 sonarqube
 ```
 
-## Grant permissions for sonar user to start and manae sonarQube
+## Grant permissions for sonar user to start and manage sonarQube
 ```sh
 sudo chown -R sonar:sonar /opt/sonarqube/
 sudo chmod -R 775 /opt/sonarqube/
