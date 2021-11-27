@@ -13,11 +13,11 @@
 + Attach Security Group to EC2 Instance.
 + Install java openJDK 1.8+ sor SonarQube 7.8
 
+## Create sonar user to manage the SonarQube server
+```sh
 #As a good security practice, SonarQuber Server is not advised to run sonar service as a root user, 
 so create a new user called sonar and grant sudo access to manage sonar services as follows
 
-## Create sonar user to manage the SonarQube server
-```sh
 sudo useradd sonar
 # Grand sudo access to sonar user
 sudo echo "sonar ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/sonar
