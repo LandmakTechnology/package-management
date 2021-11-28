@@ -4,7 +4,7 @@
 
 
 
-## Nexus Installation And Setup In AWS EC2 Redhat Instnace.
+## Nexus Installation And Setup In AWS EC2 Redhat Instance.
 ##### Pre-requisite
 + AWS Acccount.
 + Create Redhat EC2 t2.medium Instance with 4GB RAM.
