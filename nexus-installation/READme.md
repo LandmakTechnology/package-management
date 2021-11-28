@@ -11,7 +11,7 @@
 + Create Security Group and open Required ports.
    + 8081 ..etc
 + Attach Security Group to EC2 Instance.
-+ Install java openJDK 1.8+ for SonarQube version 3.15
++ Install java openJDK 1.8+ for Nexus version 3.15
 
 ## Create nexus user to manage the Nexus server
 ```sh
