@@ -13,7 +13,7 @@
 + Attach Security Group to EC2 Instance.
 + Install java openJDK 1.8+ for SonarQube version 3.15
 
-## Create nexus user to manage the SonarQube server
+## Create nexus user to manage the Nexus server
 ```sh
 #As a good security practice, Nexus is not advised to run nexus service as a root user, 
 # so create a new user called nexus and grant sudo access to manage nexus services as follows. 
