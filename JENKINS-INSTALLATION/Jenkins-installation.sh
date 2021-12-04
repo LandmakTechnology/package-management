@@ -10,7 +10,7 @@ sudo wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://
 sudo yum install jdk-8u131-linux-x64.rpm -y
 # 2. Add Jenkins Repository and key
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-sudo cd /etc/yum.repos.d/
+cd /etc/yum.repos.d/
 sudo curl -O https://pkg.jenkins.io/redhat-stable/jenkins.repo
 # 3. Install Jenkins
 sudo yum -y install jenkins
