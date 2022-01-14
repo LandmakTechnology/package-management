@@ -1,0 +1,7 @@
+Class26 DevOps Master Program Landmark Technologies, [14/01/2022 02:53]
+#!/bin/bash
+#Step3b Ubuntu Server 18.04 LTS (HVM),
+sudo hostname docker
+sudo apt update -y 
+sudo apt install docker.io -y
+sudo usermod -aG docker ubuntu
