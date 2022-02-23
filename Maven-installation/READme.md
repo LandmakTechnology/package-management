@@ -29,19 +29,18 @@ git --version
 ## 2. Download, extract and Install Maven
 ``` sh
 #Step1) Download the Maven Software
-sudo wget https://dlcdn.apache.org/maven/maven-3/3.8.3/binaries/apache-maven-3.8.3-bin.zip
-sudo unzip apache-maven-3.8.3-bin.zip
-sudo rm -rf apache-maven-3.8.3-bin.zip
-sudo mv apache-maven-3.8.3/ maven
+sudo wget https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.zip
+sudo unzip apache-maven-3.8.4-bin.zip
+sudo rm -rf apache-maven-3.8.4-bin.zip
+sudo mv apache-maven-3.8.4/ maven
 ```
 ## .#Step3) Set Environmental Variable  - For Specific User eg ec2-user
 ``` sh
 vi ~/.bash_profile  # and add the lines below
 export M2_HOME=/opt/maven
 export PATH=$PATH:$M2_HOME/bin
-#
 ```
-## .#Step4) Refrsh the profile file and Verify if maven is running
+## .#Step4) Refresh the profile file and Verify if maven is running
 ```sh
 source ~/.bashrc
 mvn -version
