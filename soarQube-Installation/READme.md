@@ -30,10 +30,9 @@ sudo su - sonar
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
 sudo service sshd restart
 ```
-### 3. Install Java JDK 1.8+ required for tomcat to start
+### 3. Install Java JDK 1.8+ required for sonarqube to start
 
 ``` sh
-hostname sonar
 cd /opt
 sudo yum -y install unzip wget git
 sudo wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm
