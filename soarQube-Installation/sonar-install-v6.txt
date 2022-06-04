@@ -20,11 +20,14 @@ add
 sudo useradd sonar
 
 # Grand sudo access to sonar user
-
 sudo echo "sonar ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/sonar
-
 sudo chown -R sonar:sonar /opt/sonarqube/
 sudo chmod -R 775 /opt/sonarqube/
+
+## Enable PasswordAuthentication
+
+sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
+sudo service sshd restart
 
 # start sonarqube as sonar user using relative path
 sudo su - sonar  
