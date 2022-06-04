@@ -22,9 +22,14 @@ sudo useradd sonar
 # Grand sudo access to sonar user
 sudo echo "sonar ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/sonar
 sudo hostname sonar
+sudo passwd sonar
 sudo su - sonar
 ```
-
+## Enable PasswordAuthentication
+```sh
+sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
+sudo service sshd restart
+```
 ### Install Java JDK 1.8+
 
 ``` sh
