@@ -13,7 +13,7 @@
 + Attach Security Group to EC2 Instance.
 + Install java openJDK 1.8+ for SonarQube version 7.8
 
-## Create sonar user to manage the SonarQube server
+## 1. Create sonar user to manage the SonarQube server
 ```sh
 #As a good security practice, SonarQuber Server is not advised to run sonar service as a root user, 
 # create a new user called sonar and grant sudo access to manage sonar services as follows
@@ -25,12 +25,12 @@ sudo hostname sonar
 sudo passwd sonar
 sudo su - sonar
 ```
-## Enable PasswordAuthentication
+## 2. Enable PasswordAuthentication in the server
 ```sh
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
 sudo service sshd restart
 ```
-### Install Java JDK 1.8+
+### 3. Install Java JDK 1.8+ required for tomcat to start
 
 ``` sh
 hostname sonar
@@ -39,7 +39,7 @@ sudo yum -y install unzip wget git
 sudo wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm
 sudo yum install jdk-8u131-linux-x64.rpm -y
 ```
-### Download and extract the SonarqQube Server software.
+### 4. Download and extract the SonarqQube Server software.
 ```sh
 sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.8.zip
 sudo unzip sonarqube-7.8.zip
@@ -47,7 +47,7 @@ sudo rm -rf sonarqube-7.8.zip
 sudo mv sonarqube-7.8 sonarqube
 ```
 
-## Grant permissions for sonar user to start and manage sonarQube
+## 4. Grant permissions for sonar user to start and manage sonarQube
 ```sh
 sudo chown -R sonar:sonar /opt/sonarqube/
 sudo chmod -R 775 /opt/sonarqube/
