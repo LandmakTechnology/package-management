@@ -8,7 +8,11 @@ sudo apt-get update -y
 sudo apt-get install jenkins -y
 # Grand sudo access to jenkins user
 sudo echo "jenkins ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/jenkins
-sudo apt-get install docker.io
+sudo apt-get install docker.io -y
 # 2. Enable PasswordAuthentication in the server
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
 sudo service sshd restart
+sudo usermod -aG docker jenkins
+sudo hostname admin
+sudo su - jenkins
+
