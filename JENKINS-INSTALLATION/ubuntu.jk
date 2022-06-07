@@ -6,4 +6,6 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
 sudo apt install openjdk-11-jre -y
 sudo apt-get update -y
 sudo apt-get install jenkins -y
-
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
