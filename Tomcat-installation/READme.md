@@ -35,7 +35,7 @@ sh /opt/tomcat9/bin/startup.sh
 # create a soft link to start and stop tomcat
 sudo ln -s /opt/tomcat9/bin/startup.sh /usr/bin/starttomcat
 sudo ln -s /opt/tomcat9/bin/shutdown.sh /usr/bin/stoptomcat
-sudo yum update -y
+sudo su - ec2-user
 starttomcat
 ```
 
