@@ -11,7 +11,7 @@ sudo yum install java-1.8.0-openjdk-devel -y
 # Download tomcat software and extract it.
 sudo yum install wget unzip -y
 
-sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.64/bin/apache-tomcat-9.0.64.tar.gz
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.67/bin/apache-tomcat-9.0.67.tar.gz
 sudo tar -xvf apache-tomcat-9.0.64.tar.gz
 sudo rm apache-tomcat-9.0.64.tar.gz
 sudo mv apache-tomcat-9.0.64 tomcat9
