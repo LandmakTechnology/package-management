@@ -14,24 +14,21 @@
    + Open all port for this illustration
 + Attach Security Group to EC2 Instance/nodes.
 
-
-
 ## Assign hostname &  login as ‘root’ user because the following set of commands need to be executed with ‘sudo’ permissions.
-
-sudo hostname k8s
+sudo hostnamectl set-hostname master
 sudo -i
 
 ``` sh
 # run the following below as a script
 # This will Install Required packages and apt keys.
 #!/bin/bash
-udo apt-get update -y
-sudo apt-get install -y apt-transport-https
+sudo apt update -y
+sudo apt install -y apt-transport-https
 sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
-apt-get update -y
+apt update -y
 #Turn Off Swap Space
 swapoff -a
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
@@ -66,3 +63,23 @@ sudo systemctl daemon-reload
 sudo systemctl start kubelet 
 sudo systemctl enable kubelet.service
 ```
+## Initialised the control plane.
+``` sh
+
+# Initialize Kubernates master by executing below commond.
+sudo kubeadm init
+#exit as root user & exeucte as normal ubuntu user
+sudo su - ubuntu
+
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+## To verify, if kubectl is working or not, run the following command.
+kubectl get pods -A
+```sh
+#deploy the network plugin - eave network
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+#start the cluster
+#sudo kubeadm init 
+****
