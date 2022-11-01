@@ -67,9 +67,9 @@ sudo systemctl enable kubelet.service
 ``` sh
 
 # Initialize Kubernates master by executing below commond.
-sudo kubeadm init
 #exit as root user & exeucte as normal ubuntu user
 sudo su - ubuntu
+sudo kubeadm init
 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
