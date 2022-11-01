@@ -63,12 +63,14 @@ sudo systemctl daemon-reload
 sudo systemctl start kubelet 
 sudo systemctl enable kubelet.service
 ```
+## exit as root user & exeucte as normal ubuntu user
+``sh
+sudo su - ubuntu
+```
 ## Initialised the control plane.
 ``` sh
 
 # Initialize Kubernates master by executing below commond.
-#exit as root user & exeucte as normal ubuntu user
-sudo su - ubuntu
 sudo kubeadm init
 
 mkdir -p $HOME/.kube
