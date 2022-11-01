@@ -4,7 +4,7 @@
 
 
 
-## Kubernetes Setup Using Kubeadm In AWS EC2 Ubuntu Serverse.
+## Kubernetes Setup Using Kubeadm In AWS EC2 Ubuntu Servers.
 ##### Prerequisite
 + AWS Acccount.
 + Create 3 - Ubuntu Servers -- 18.04.
