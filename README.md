@@ -63,25 +63,39 @@ sudo systemctl daemon-reload
 sudo systemctl start kubelet 
 sudo systemctl enable kubelet.service
 ```
-## exit as root user & exeucte as normal ubuntu user
-``sh
+## exit as root user & execute the below commands as normal ubuntu user
+```sh
 sudo su - ubuntu
 ```
+
 ## Initialised the control plane.
 ``` sh
-
 # Initialize Kubernates master by executing below commond.
 sudo kubeadm init
 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
+```
 ## To verify, if kubectl is working or not, run the following command.
 kubectl get pods -A
 ```sh
-#deploy the network plugin - eave network
+#deploy the network plugin - weave network
 kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
-#start the cluster
-#sudo kubeadm init 
-****
+kubectl get pods -A
+kubectl get node
+```
+```sh
+#deploy the network plugin - weave network
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+kubectl get pods -A
+kubectl get node
+```
+## Copy kubeadm join token from the master and execute in Worker Nodes to join to cluster
+```sh
+kubeadm join 172.31.10.12:6443 --token cdm6fo.dhbrxyleqe5suy6e \
+        --discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
+```
+
+
+
