@@ -15,6 +15,7 @@ sudo rm apache-tomcat-9.0.69.tar.gz
 sudo chmod 777 -R /opt/tomcat9
 sudo sh /opt/tomcat9/bin/startup.sh
 # create a soft link to start and stop tomcat from anywhere 
+# This will enable you to manage tomcat as a service
 sudo ln -s /opt/tomcat9/bin/startup.sh /usr/bin/starttomcat
 sudo ln -s /opt/tomcat9/bin/shutdown.sh /usr/bin/stoptomcat
 sudo starttomcat
@@ -22,7 +23,6 @@ echo "end on tomcat installation"
 #========
 
 #2. Start of tomcat configuration 
-
 
 #Tomcat server configuration:
 find / -name server.xml context.xml
