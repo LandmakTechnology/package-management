@@ -118,19 +118,20 @@ apt-mark hold kubelet kubeadm kubectl
 systemctl daemon-reload
 systemctl start kubelet
 systemctl enable kubelet.service
-
 ```
-## exit as root user & execute the below commands as normal ubuntu user
+## Initialised the control plane.
+``` sh
+# Initialize Kubernetes control plane by running the below commond as root user.
+sudo kubeadm init
+```
+
+## exit as root user 
 ```sh
 sudo su - ubuntu
 ```
 
-## Initialised the control plane.
-``` sh
-# Initialize Kubernates master by executing below commond.
-
-sudo kubeadm init
-
+## execute the below commands as a normal ubuntu user
+```sh 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
@@ -155,6 +156,15 @@ kubeadm join 172.31.10.12:6443 --token cdm6fo.dhbrxyleqe5suy6e \
         --discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
 ```
 
-
+##  Generate the master join token on the master node
+```sh
+kubeadm token create --print-join-command
+``` 
+##  Copy the token and run it on worker nodes to add them to the control plane
+# Replace the token below with yours. This step is important when you restart your nodes
+```sh
+kubeadm join 172.31.10.12:6443 --token cdm6fo.dhbrxyleqe5suy6e \
+        --discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
+```
 
 
