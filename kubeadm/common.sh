@@ -66,7 +66,7 @@ sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config
 systemctl restart containerd
 systemctl enable containerd
 
-5) Installing kubeadm, kubelet and kubectl
+#5) Installing kubeadm, kubelet and kubectl
 
 # Update the apt package index and install packages needed to use the Kubernetes apt repository:
 
