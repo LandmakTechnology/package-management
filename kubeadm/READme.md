@@ -141,13 +141,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ## To verify, if kubectl is working or not, run the following command.
 kubectl get pods -A
 ```sh
-#deploy the network plugin - weave network
-kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
-kubectl get pods -A
-kubectl get node
-```
-```sh
-#deploy the network plugin - weave network
+#deploy the network plugin - weave network and verify
 kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 kubectl get pods -A
 kubectl get node
