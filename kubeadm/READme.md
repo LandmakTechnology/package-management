@@ -22,6 +22,8 @@ sudo -i
 
 ``` sh
 #!/bin/bash
+# common.sh
+# copy this script and run in all master and worker nodes
 #i1) Switch to root user [ sudo -i]
 
 sudo hostnamectl set-hostname  node1
@@ -119,7 +121,7 @@ systemctl daemon-reload
 systemctl start kubelet
 systemctl enable kubelet.service
 ```
-## Initialised the control plane.
+## Initialised the control plane in the master node as the root user.
 ``` sh
 # Initialize Kubernetes control plane by running the below commond as root user.
 sudo kubeadm init
