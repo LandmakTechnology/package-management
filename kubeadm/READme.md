@@ -22,6 +22,8 @@ sudo -i
 
 ``` sh
 #!/bin/bash
+# common.sh
+# copy this script and run in all master and worker nodes
 #i1) Switch to root user [ sudo -i]
 
 sudo hostnamectl set-hostname  node1
@@ -119,7 +121,7 @@ systemctl daemon-reload
 systemctl start kubelet
 systemctl enable kubelet.service
 ```
-## Initialised the control plane.
+## Initialised the control plane in the master node as the root user.
 ``` sh
 # Initialize Kubernetes control plane by running the below commond as root user.
 sudo kubeadm init
@@ -139,13 +141,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ## To verify, if kubectl is working or not, run the following command.
 kubectl get pods -A
 ```sh
-#deploy the network plugin - weave network
-kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
-kubectl get pods -A
-kubectl get node
-```
-```sh
-#deploy the network plugin - weave network
+#deploy the network plugin - weave network and verify
 kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 kubectl get pods -A
 kubectl get node
