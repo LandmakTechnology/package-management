@@ -1,0 +1,14 @@
+#Install Nginx in Redhat
+
+dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest- 8.noarch.rpm
+
+sudo yum install nginx
+
+#Enable the nginx service
+sudo systemctl enable nginx
+
+#Start the nginx service
+sudo systemctl start nginx
+
+#Check the nginx service status
+sudo systemctl status nginx
