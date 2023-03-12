@@ -96,5 +96,5 @@ systemctl daemon-reload
 systemctl start kubelet
 systemctl enable kubelet.service
 
-sudo kubeadm join 10.0.0.6:6443 --token xmzufh.e0nu3kb5ohijfxyh \
-        --discovery-token-ca-cert-hash sha256:579b6a53bd00c8483f5150b9fb521b6431fc38b1ac716b8b9a5f668928a93771
+sudo kubeadm join 172.31.16.107:6443 --token 77r0hn.0f8dndgr117wibwd \
+	--discovery-token-ca-cert-hash sha256:fdb8a2bc48d9e13f504dca9239c555a65ac0eb3a270f01dafb268065b795275d
