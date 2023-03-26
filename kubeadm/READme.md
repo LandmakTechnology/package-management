@@ -100,7 +100,7 @@ kubeadm join 172.31.10.12:6443 --token cdm6fo.dhbrxyleqe5suy6e \
 ```
 ## If you have a pre-flight check error when you run "sudo kubeadm init", run this first command
 modprobe br_netfilter
-echo '1' > /proc/sys/net/ipv4/ip_forward
+
 
 
 
