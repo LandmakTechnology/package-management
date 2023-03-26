@@ -98,6 +98,9 @@ kubectl get node
 kubeadm join 172.31.10.12:6443 --token cdm6fo.dhbrxyleqe5suy6e \
         --discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
 ```
+## If you have a pre-flight check error when you run "sudo kubeadm init", run this first command
+modprobe br_netfilter
+echo '1' > /proc/sys/net/ipv4/ip_forward
 
 
 
