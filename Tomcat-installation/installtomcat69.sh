@@ -3,7 +3,7 @@
 # https://github.com/LandmakTechnology/package-management/tree/main/Tomcat-installation
 sudo hostnamectl set-hostname tomcat
 cd /opt
-sudo yum install git wget vim -y
+sudo yum install git wget unzip vim -y
 sudo yum install java-1.8.0-openjdk-devel -y
 # Download tomcat software and extract it.
 # dowanload and extract tomcat software
