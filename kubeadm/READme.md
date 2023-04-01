@@ -184,4 +184,22 @@ Run the command kubectl describe pod using the name of the kube-proxy pod that f
 Run the command kubectl logs [pod-name] -n kube-system to see a full log of the failing kube-proxy pod.
 Run the command kubectl describe daemonset kube-proxy -n kube-system to see the status of the kube-proxy daemonset, which is responsible for ensuring there is a kube-proxy running on every Kubernetes node.
 Please note that these procedures can help you gather more information about the problem, but additional steps may be needed to resolve the problem. If one of the quick fixes above did not work, you’ll need to undertake a more complex, non-linear diagnosis procedure to identify which parts of the Kubernetes environment contribute to the node not ready problem and resolve it.
+---
+The following error indicates a possible certificate mismatch.
+# kubectl get pods
+Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "kubernetes")
+
+Run this script
+set it to the default KUBECONFIG location:
+
+export KUBECONFIG=/etc/kubernetes/admin.conf
+
+OR
+
+Overwrite the existing kubeconfig for the "admin" user:
+
+mv  $HOME/.kube $HOME/.kube.bak
+mkdir $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
