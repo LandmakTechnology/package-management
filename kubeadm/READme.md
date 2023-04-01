@@ -83,7 +83,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 kubectl get pods -A
 ```sh
 #deploy the network plugin - weave network
-kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+wget https://github.com/weaveworks/weave/releases/download/v2.6.0/weave-daemonset-k8s-1.11.yaml
 kubectl get pods -A
 kubectl get node
 ```
