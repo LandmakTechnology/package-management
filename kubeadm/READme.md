@@ -14,12 +14,12 @@
    + Open all port for this illustration
 + Attach Security Group to EC2 Instance/nodes.
 
-## Assign hostname &  login as ‘root’ user because the following set of commands need to be executed with ‘sudo’ permissions.
+## Step 1. Assign hostname &  login as ‘root’ user because the following set of commands need to be executed with ‘sudo’ permissions.
 ```sh
 sudo hostnamectl set-hostname master
 sudo -i
 ```
-
+## Step 2.
 ``` sh
 # run the following below as a script
 # This will Install Required packages and apt keys.
@@ -70,25 +70,26 @@ sudo systemctl enable kubelet.service
 sudo su - ubuntu
 ```
 
-## Initialised the control plane.
+## Step 3. Initialised the control plane.
 ``` sh
 # Initialize Kubernates master by executing below commond.
 sudo kubeadm init
 
+## Step 4. 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
-## To verify, if kubectl is working or not, run the following command.
+## Step 5. To verify, if kubectl is working or not, run the following command.
 kubectl get pods -A
 ```sh
-#deploy the network plugin - weave network
+## Step 5. deploy the network plugin - weave network
 wget https://github.com/weaveworks/weave/releases/download/v2.6.0/weave-daemonset-k8s-1.11.yaml
 kubectl get pods -A
 kubectl get node
 ```
 ```sh
-#deploy the network plugin - weave network
+##deploy the network plugin - weave network
 kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 kubectl get pods -A
 kubectl get node
@@ -98,7 +99,7 @@ kubectl get node
 kubeadm join 172.31.10.12:6443 --token cdm6fo.dhbrxyleqe5suy6e \
         --discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
 ```
-## If you have a pre-flight check error when you run "sudo kubeadm init", run this first command
+## Step 7 If you have a pre-flight check error when you run "sudo kubeadm init", run this first command
 modprobe br_netfilter
 ---
 ##What is the Kubernetes Node Not Ready Error?
