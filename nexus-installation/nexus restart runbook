@@ -1,0 +1,168 @@
+[nexus@nexus opt]$ ls
+jfrog  mwa      nexus            package
+mvn    mwd.war  nexus-3.15.2-01  sonatype-work
+[nexus@nexus opt]$ sudo mv /opt/nexus -3.15.2.01 /opt/nexus
+mv: invalid option -- '3'
+Try 'mv --help' for more information.
+[nexus@nexus opt]$ mv help
+mv: missing destination file operand after 'help'
+Try 'mv --help' for more information.
+[nexus@nexus opt]$ --help
+bash: --help: command not found
+[nexus@nexus opt]$ sudo mv /opt/nexus-3.15.2-01
+mv: missing destination file operand after '/opt/nexus-3.15.2-01'
+Try 'mv --help' for more information.
+[nexus@nexus opt]$
+[nexus@nexus opt]$ ls
+jfrog  mwa      nexus            package
+mvn    mwd.war  nexus-3.15.2-01  sonatype-work
+[nexus@nexus opt]$ ls nexus
+bin     nexus            PRO-LICENSE.txt
+deploy  nexus-3.15.2-01  public
+etc     NOTICE.txt       sonatype-work
+lib     OSS-LICENSE.txt  system
+[nexus@nexus opt]$ vi /opt/nexus/bin/nexus
+[nexus@nexus opt]$ vi vim run_as_user=nexus
+2 files to edit
+[nexus@nexus opt]$ vi run_as_user=nexus
+[nexus@nexus opt]$ vi run_as_user=nexus.rc
+
+[1]+  Stopped                 vi run_as_user=nexus.rc
+[nexus@nexus opt]$
+[nexus@nexus opt]$ echo 'run_as_user="nexus"'> /opt/nexus/bin/nexus.rc
+[nexus@nexus opt]$ cat /opt/nexus/bin/nexus.rc  run_as_user="nexus"
+[nexus@nexus opt]$ sudosystemctl start nexus
+bash: sudosystemctl: command not found
+[nexus@nexus opt]$ sudosystemctl start nexus
+bash: sudosystemctl: command not found
+[nexus@nexus opt]$ sudosy stemctl start nexus
+bash: sudosy: command not found
+[nexus@nexus opt]$ sudo systemctl start nexus
+[nexus@nexus opt]$ sudo systemctl status nexus
+● nexus.service - LSB: nexus
+     Loaded: loaded (/etc/rc.d/init.d/nexus; ge>
+     Active: active (exited) since Thu 2023-04->
+       Docs: man:systemd-sysv-generator(8)
+        CPU: 202ms
+
+Apr 13 15:58:20 nexus systemd[1]: Starting LSB:>
+Apr 13 15:58:20 nexus su[651]: (to nexus) root >
+Apr 13 15:58:23 nexus systemd[1]: Started LSB: >
+
+[nexus@nexus opt]$
+[nexus@nexus opt]$
+[nexus@nexus opt]$ curl -v 54.243.13.240:8081
+*   Trying 54.243.13.240:8081...
+* Connected to 54.243.13.240 (54.243.13.240) port 8081 (#0)
+> GET / HTTP/1.1
+> Host: 54.243.13.240:8081
+> User-Agent: curl/7.76.1
+> Accept: */*
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Date: Thu, 13 Apr 2023 23:57:45 GMT
+< Server: Nexus/3.15.2-01 (OSS)
+< X-Content-Type-Options: nosniff
+< X-Frame-Options: DENY
+< Content-Type: text/html
+< Last-Modified: Thu, 13 Apr 2023 23:57:45 GMT
+< Pragma: no-cache
+< Cache-Control: post-check=0, pre-check=0
+< Expires: 0
+< Content-Length: 6525
+<
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Nexus Repository Manager</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="description" content="Nexus Repository Manager"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+
+  <!--[if lt IE 9]>
+    <script>(new Image).src="http://54.243.13.240:8081/static/rapture/resources/favicon.ico?_v=3.15.2-01"</script>
+  <![endif]-->
+  <link rel="icon" type="image/png" href="http://54.243.13.240:8081/static/rapture/resources/favicon-32x32.png?_v=3.15.2-01" sizes="32x32">
+  <link rel="mask-icon" href="http://54.243.13.240:8081/static/rapture/resources/safari-pinned-tab.svg?_v=3.15.2-01" color="#5bbad5">
+  <link rel="icon" type="image/png" href="http://54.243.13.240:8081/static/rapture/resources/favicon-16x16.png?_v=3.15.2-01" sizes="16x16">
+  <link rel="shortcut icon" href="http://54.243.13.240:8081/static/rapture/resources/favicon.ico?_v=3.15.2-01">
+  <meta name="msapplication-TileImage" content="http://54.243.13.240:8081/static/rapture/resources/mstile-144x144.png?_v=3.15.2-01">
+  <meta name="msapplication-TileColor" content="#00a300">
+
+
+
+            <link rel="stylesheet" type="text/css" href="http://54.243.13.240:8081/static/rapture/resources/loading-prod.css?_v=3.15.2-01">
+            <link rel="stylesheet" type="text/css" href="http://54.243.13.240:8081/static/rapture/resources/baseapp-prod.css?_v=3.15.2-01">
+            <link rel="stylesheet" type="text/css" href="http://54.243.13.240:8081/static/rapture/resources/nexus-rapture-prod.css?_v=3.15.2-01">
+            <link rel="stylesheet" type="text/css" href="http://54.243.13.240:8081/static/rapture/resources/nexus-proximanova-plugin-prod.css?_v=3.15.2-01">
+            <link rel="stylesheet" type="text/css" href="http://54.243.13.240:8081/static/rapture/resources/nexus-coreui-plugin-prod.css?_v=3.15.2-01">
+            <link rel="stylesheet" type="text/css" href="http://54.243.13.240:8081/static/rapture/resources/nexus-proui-plugin-prod.css?_v=3.15.2-01">
+
+    <script type="text/javascript">
+    function progressMessage(msg) {
+      if (console && console.log) {
+        console.log(msg);
+      }
+      document.getElementById('loading-msg').innerHTML=msg;
+    }
+  </script>
+  </head>
+<body class="x-border-box">
+
+<div id="loading-mask"></div>
+<div id="loading">
+  <div id="loading-background">
+    <img id="loading-logo" src="http://54.243.13.240:8081/static/rapture/resources/images/loading-logo.png?_v=3.15.2-01" alt="Product Logo"/>
+    <img id="loading-product" src="http://54.243.13.240:8081/static/rapture/resources/images/loading-product.png?_v=3.15.2-01" alt="Nexus Repository Manager"/>
+    <div class="loading-indicator">
+      <img id="loading-spinner" src="http://54.243.13.240:8081/static/rapture/resources/images/loading-spinner.gif?_v=3.15.2-01" alt="Loading Spinner"/>
+      <span id="loading-msg">Loading ...</span>
+    </div>
+  </div>
+
+    <div id="code-load" class="x-hide-display">
+
+                  <script type="text/javascript">progressMessage('Loading baseapp-prod.js');</script>
+              <script type="text/javascript" src="http://54.243.13.240:8081/static/rapture/baseapp-prod.js?_v=3.15.2-01"></script>
+                  <script type="text/javascript">progressMessage('Loading extdirect-prod.js');</script>
+              <script type="text/javascript" src="http://54.243.13.240:8081/static/rapture/extdirect-prod.js?_v=3.15.2-01"></script>
+                  <script type="text/javascript">progressMessage('Loading bootstrap.js');</script>
+              <script type="text/javascript" src="http://54.243.13.240:8081/static/rapture/bootstrap.js?_v=3.15.2-01"></script>
+                  <script type="text/javascript">progressMessage('Loading d3.v4.min.js');</script>
+              <script type="text/javascript" src="http://54.243.13.240:8081/static/rapture/d3.v4.min.js?_v=3.15.2-01"></script>
+                  <script type="text/javascript">progressMessage('Loading nexus-rapture-prod.js');</script>
+              <script type="text/javascript" src="http://54.243.13.240:8081/static/rapture/nexus-rapture-prod.js?_v=3.15.2-01"></script>
+                  <script type="text/javascript">progressMessage('Loading nexus-rutauth-plugin-prod.js');</script>
+              <script type="text/javascript" src="http://54.243.13.240:8081/static/rapture/nexus-rutauth-plugin-prod.js?_v=3.15.2-01"></script>
+                  <script type="text/javascript">progressMessage('Loading nexus-coreui-plugin-prod.js');</script>
+              <script type="text/javascript" src="http://54.243.13.240:8081/static/rapture/nexus-coreui-plugin-prod.js?_v=3.15.2-01"></script>
+                  <script type="text/javascript">progressMessage('Loading nexus-proui-plugin-prod.js');</script>
+              <script type="text/javascript" src="http://54.243.13.240:8081/static/rapture/nexus-proui-plugin-prod.js?_v=3.15.2-01"></script>
+                  <script type="text/javascript">progressMessage('Loading nexus-repository-pypi-prod.js');</script>
+              <script type="text/javascript" src="http://54.243.13.240:8081/static/rapture/nexus-repository-pypi-prod.js?_v=3.15.2-01"></script>
+                  <script type="text/javascript">progressMessage('Loading nexus-repository-maven-prod.js');</script>
+              <script type="text/javascript" src="http://54.243.13.240:8081/static/rapture/nexus-repository-maven-prod.js?_v=3.15.2-01"></script>
+                  <script type="text/javascript">progressMessage('Loading nexus-repository-nuget-prod.js');</script>
+              <script type="text/javascript" src="http://54.243.13.240:8081/static/rapture/nexus-repository-nuget-prod.js?_v=3.15.2-01"></script>
+                  <script type="text/javascript">progressMessage('Loading nexus-repository-rubygems-prod.js');</script>
+              <script type="text/javascript" src="http://54.243.13.240:8081/static/rapture/nexus-repository-rubygems-prod.js?_v=3.15.2-01"></script>
+                  <script type="text/javascript">progressMessage('Loading app.js');</script>
+              <script type="text/javascript" src="http://54.243.13.240:8081/static/rapture/app.js?_v=3.15.2-01"></script>
+
+            <script type="text/javascript">progressMessage('Initializing ...');</script>
+    </div>
+</div>
+
+<form id="history-form" class="x-hide-display" tabindex="-1">
+  <input type="hidden" id="x-history-field"/>
+  <iframe id="x-history-frame" title="Browse history form"></iframe>
+</form>
+
+</body>
+</html>
+* Connection #0 to host 54.243.13.240 left intact
+[nexus@nexus opt]$
+  
