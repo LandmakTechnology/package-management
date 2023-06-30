@@ -15,11 +15,17 @@
 
 ### Install Java JDK 11+  and other softares (GIT, wget and tree)
 
+
 ``` sh
-# install Java JDK 11+ as a pre-requisit for maven to run.
+# set hostname as maven.
 
 sudo hostnamectl set-hostname maven
 sudo su - ec2-user
+
+```
+
+``` sh
+# install Java JDK 11+ as a pre-requisite for maven to run.
 cd /opt
 sudo yum install wget nano tree unzip git-all -y
 sudo yum install java-11-openjdk-devel java-1.8.0-openjdk-devel -y
