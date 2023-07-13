@@ -43,8 +43,11 @@ export PATH=$PATH:$M2_HOME/bin
 ```
 ## .#Step4) Refresh the profile file and Verify if maven is running
 ```sh
-
-Alternatively, use this script to install java and maven
+source ~/.bash_profile
+or source .bash_profile
+mvn -version
+```
+## Alternatively, use this script to install java and maven
 --------------------------------------------------------
 ```
 #!/bin/bash
@@ -67,8 +70,5 @@ sudo yum install -y maven
 java -version
 mvn --version
 ```
-source ~/.bash_profile
-or source .bash_profile
-mvn -version
-```
+
 
