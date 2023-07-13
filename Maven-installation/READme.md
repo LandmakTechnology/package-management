@@ -43,6 +43,30 @@ export PATH=$PATH:$M2_HOME/bin
 ```
 ## .#Step4) Refresh the profile file and Verify if maven is running
 ```sh
+
+Alternatively, use this script to install java and maven
+--------------------------------------------------------
+```
+#!/bin/bash
+
+# Update the package manager
+sudo yum update -y
+
+# Install Java Development Kit (JDK)
+sudo yum install -y java-1.8.0-openjdk-devel
+
+# Set Java environment variables
+echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk" >> ~/.bashrc
+echo "export PATH=\$PATH:\$JAVA_HOME/bin" >> ~/.bashrc
+source ~/.bashrc
+
+# Install Apache Maven
+sudo yum install -y maven
+
+# Verify Java and Maven installations
+java -version
+mvn --version
+```
 source ~/.bash_profile
 or source .bash_profile
 mvn -version
