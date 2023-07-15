@@ -24,13 +24,13 @@ sudo yum install java-1.8.0-openjdk-devel -y
 # install wget unzip packages.
 sudo yum install wget unzip -y
 ```
-## Install Tomcat version 10.10.27
+## Install Tomcat version 9
 ### Download and extract the tomcat server
 ``` sh
-sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.71/bin/apache-tomcat-9.0.71.tar.gz
-sudo tar -xvf apache-tomcat-9.0.71.tar.gz
-sudo rm -rf apache-tomcat-9.0.71.tar.gz
-sudo mv apache-tomcat-9.0.71 tomcat9
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.78/bin/apache-tomcat-9.0.78.tar.gz
+sudo tar -xvf apache-tomcat-9.0.78.tar.gz
+sudo rm -rf apache-tomcat-9.0.78.tar.gz
+sudo mv apache-tomcat-9.0.78 tomcat9
 sudo chmod 777 -R /opt/tomcat9
 
 ### assign executable permissions to the tomcat home directory
