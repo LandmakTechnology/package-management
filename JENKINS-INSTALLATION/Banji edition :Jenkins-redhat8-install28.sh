@@ -16,7 +16,7 @@ sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 sudo yum upgrade
 # Add required dependencies for the jenkins package
 sudo yum install java-17-openjdk -y
-sudo yum install tree telnet vim -y
+sudo yum install tree telnet vim git -y
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 cd /etc/yum.repos.d/
 sudo curl -O https://pkg.jenkins.io/redhat-stable/jenkins.repo
