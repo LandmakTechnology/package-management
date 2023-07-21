@@ -13,6 +13,7 @@
 + Attach Security Group to EC2 Instance.
 + Install java openJDK 1.8+ for SonarQube version 7.8
 
+
 ## 1. Create sonar user to manage the SonarQube server
 ```sh
 #As a good security practice, SonarQuber Server is not advised to run sonar service as a root user, 
@@ -40,6 +41,11 @@ sudo service sshd restart
 cd /opt
 sudo yum -y install unzip wget git
 sudo yum install  java-11-openjdk-devel
+```
+### Alternatively install java-17-openjdk-devel
+
+```sh
+sudo yum install java-17-openjdk-devel
 ```
 ### 4. Download and extract the SonarqQube Server software.
 ```sh
