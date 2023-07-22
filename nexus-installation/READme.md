@@ -12,6 +12,11 @@
    + 8081 ..etc
 + Attach Security Group to EC2 Instance.
 + Install java openJDK 1.8+ for Nexus version 3.15
+## New Prerequisite
++ Minimum 1 VCPU & 2 GB Memory
++ Server firewall opened for port 22 & 8081 
++ OpenJDK 8
++ All Nexus processes should run as a non-root nexus user.
 
 ## Create nexus user to manage the Nexus server
 ```sh
@@ -33,12 +38,21 @@ cd /opt
 sudo yum install wget git nano unzip -y
 sudo yum install java-11-openjdk-devel java-1.8.0-openjdk-devel -y
 ```
+## New
+```sh
+sudo yum install java-1.8.0-openjdk.x86_64 -y
+```
 ### Download nexus software and extract it (unzip).
 ```sh
 sudo wget http://download.sonatype.com/nexus/3/nexus-3.15.2-01-unix.tar.gz 
 sudo tar -zxvf nexus-3.15.2-01-unix.tar.gz
 sudo mv /opt/nexus-3.15.2-01 /opt/nexus
 sudo rm -rf nexus-3.15.2-01-unix.tar.gz
+```
+## New
+```sh
+sudo wget -O nexus.tar.gz https://download.sonatype.com/nexus/3/latest-unix.tar.gz
+sudo tar -xvf nexus.tar.gz
 ```
 
 ## Grant permissions for nexus user to start and manage nexus service
