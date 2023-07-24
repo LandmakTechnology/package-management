@@ -81,16 +81,12 @@ sudo unzip apache-maven-3.9.3-bin.zip
 sudo rm -rf apache-maven-3.9.3-bin.zip
 sudo mv apache-maven-3.9.3/ maven
 ```
+
 ## .#Step3) Set Environmental Variable  - For Specific User eg ec2-user
-``` sh
-vi ~/.bash_profile  # and add the lines below
-export M2_HOME=/opt/maven
-export PATH=$PATH:$M2_HOME/bin
-```
-## .#Step4) Refresh the profile file and Verify if maven is running
 ```sh
-source ~/.bash_profile
-or source .bash_profile
+echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk" >> ~/.bashrc  # Add the appropriate path for your installed Java version
+source ~/.bashrc   # Reload the shell configuration to apply the changes
+
 mvn -version
 ```
 ## Alternatively, use this script to install java and maven
