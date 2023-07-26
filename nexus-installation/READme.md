@@ -44,6 +44,12 @@ sudo yum install java-1.8.0-openjdk.x86_64 -y
 ```
 ### Download nexus software and extract it (unzip).
 ```sh
+sudo wget https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/3/nexus-3.58.1-02-unix.tar.gz
+sudo tar -zxvf nexus-3.58.1-02-unix.tar.gz
+sudo mv /opt/nexus-3.58.1-02 /opt/nexus
+sudo rm -rf nexus-3.58.1-02-unix.tar.gz
+```
+```sh
 sudo wget http://download.sonatype.com/nexus/3/nexus-3.15.2-01-unix.tar.gz 
 sudo tar -zxvf nexus-3.15.2-01-unix.tar.gz
 sudo mv /opt/nexus-3.15.2-01 /opt/nexus
