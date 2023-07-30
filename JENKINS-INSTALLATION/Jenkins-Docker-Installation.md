@@ -1,5 +1,5 @@
 
-# Jenkins Installation And Setup In AWS EC2 Ubuntu or Amazon Linux Instnace.
+# Jenkins Installation And Setup In AWS EC2 Ubuntu or Amazon Linux Instnace Using Docker.
 
 #### Prerequisite
  + AWS Acccount.
@@ -13,7 +13,7 @@
 ### A. Install Docker on Ubuntu
 ``` sh
 sudo apt-get update
-sudo apt-get install docker.io
+sudo apt-get install docker.io -y
 ```
 --------OR---------
 
@@ -26,7 +26,7 @@ sudo service docker start
 ## Step 2
 ## Run Jenkins Using Docker
 ``` sh
-sudo docker run --name jenkins -p 8080:8080 --restart=on-failure jenkins/jenkins:lts-jdk11
+sudo docker run --name jenkins -p 8080:8080 -d --restart=on-failure jenkins/jenkins:lts-jdk11
 ```
 
 
