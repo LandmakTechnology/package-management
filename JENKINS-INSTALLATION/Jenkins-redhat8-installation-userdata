@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo hostnamectl set-hostname ci
+sudo hostnamectl set-hostname jenkins
 sudo yum -y install unzip wget tree git
 sudo yum install java-11-openjdk -y
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
