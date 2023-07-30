@@ -17,7 +17,7 @@
 ### Install other softwares - git, unzip and wget
 
 ``` sh
-sudo hostnamectl set-hostname ci
+sudo hostnamectl set-hostname jenkins
 sudo yum -y install unzip wget tree git
 sudo yum install java-11-openjdk -y
 ```
