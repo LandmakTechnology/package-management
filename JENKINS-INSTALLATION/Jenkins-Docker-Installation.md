@@ -46,3 +46,24 @@ password will be display, copy the password and use to login to Jenkins server o
 public-ip:8080
 curl ifconfig.co 
 ```
+
+
+
+## Jenkins Nexus Integration (WIP) 
+## Access Jenkins from the browser
+
+In your Jenkins docker server, run these commands:
+
+```sh
+docker exec -u 0 -it jenkins bash
+```
+
+
+```sh
+apt-get update
+apt-get install nano 
+nano jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven3.*.*/conf/settings.xml
+```
+Add nexus repo url to the distributionManagement tag in Pom.xml (in your GitHub repo)
+
+(Replace * with the version of maven tool you installed in Jenkins)
