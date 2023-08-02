@@ -62,7 +62,7 @@ docker exec -u 0 -it jenkins bash
 ```sh
 apt-get update
 apt-get install nano 
-nano jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven3.*.*/conf/settings.xml
+nano /var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven3.*.*/conf/settings.xml
 ```
 Add nexus repo url to the distributionManagement tag in Pom.xml (in your GitHub repo)
 
