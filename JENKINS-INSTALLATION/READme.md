@@ -16,13 +16,12 @@
 ### Install Java JDK 1.8+ as Jenkins pre-requisit
 ### Install other softwares - git, unzip and wget
 # Add required dependencies for the jenkins package
-## Install Jenkins
+
 ``` sh
 sudo hostname ci
 sudo yum -y install unzip wget tree git
 sudo yum install java-17-openjdk
-sudo yum install jenkins
-sudo systemctl daemon-reload
+
 ```
 ###  Add Jenkins Repository and key
 ```sh
@@ -30,6 +29,11 @@ sudo wget -O /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 sudo yum upgrade
+```
+### Install Jenkins
+```sh
+sudo yum install jenkins
+sudo systemctl daemon-reload
 ```
 # start Jenkins  service and verify Jenkins is running
 ```sh
