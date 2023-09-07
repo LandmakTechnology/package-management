@@ -35,3 +35,26 @@ Verify that the Docker Engine installation is successful by running the hello-wo
 $ sudo docker run hello-world
 ```
 This command downloads a test image and runs it in a container. When the container runs, it prints a confirmation message and exits.
+
+To create the docker group and add your user:
+
+Create the docker group.
+```docker
+$ sudo groupadd docker
+```
+Add your user to the docker group.
+```docker
+$ sudo usermod -aG docker $USER
+```
+Log out and log back in so that your group membership is re-evaluated.
+
+If you're running Linux in a virtual machine, it may be necessary to restart the virtual machine for changes to take effect.
+
+You can also run the following command to activate the changes to groups:
+```docker
+$ newgrp docker
+```
+Verify that you can run docker commands without sudo.
+```docker
+$ docker run hello-world
+```
