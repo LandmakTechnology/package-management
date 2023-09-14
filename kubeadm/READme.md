@@ -75,8 +75,9 @@ sudo su - ubuntu
 # Initialize Kubernates master by executing below commond.
 sudo kubeadm init
 ```
+
+## Step 4.
 ```sh
-## Step 4. 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
