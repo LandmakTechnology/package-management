@@ -82,10 +82,13 @@ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
+
 ## Step 5. To verify, if kubectl is working or not, run the following command.
-kubectl get pods -A
 ```sh
-## Step 5. deploy the network plugin - weave network
+kubectl get pods -A
+```
+## Step 6. Deploy the network plugin - weave network
+```sh
 wget https://github.com/weaveworks/weave/releases/download/v2.6.0/weave-daemonset-k8s-1.11.yaml
 kubectl get pods -A
 kubectl get node
@@ -96,12 +99,12 @@ kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/we
 kubectl get pods -A
 kubectl get node
 ```
-## Copy kubeadm join token from the master and execute in Worker Nodes to join to cluster
+## Step 7. Copy kubeadm join token from the master and execute in Worker Nodes to join to cluster
 ```sh
 kubeadm join 172.31.10.12:6443 --token cdm6fo.dhbrxyleqe5suy6e \
         --discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
 ```
-## Step 7 If you have a pre-flight check error when you run "sudo kubeadm init", run this first command
+## Step 8. If you have a pre-flight check error when you run "sudo kubeadm init", run this first command
 modprobe br_netfilter
 ---
 ##What is the Kubernetes Node Not Ready Error?
