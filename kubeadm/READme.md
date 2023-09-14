@@ -76,7 +76,7 @@ sudo su - ubuntu
 sudo kubeadm init
 ```
 
-## Step 4.
+## Step 4. Make .kube directory and copy to $HOME/.kube/config
 ```sh
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
