@@ -73,6 +73,7 @@ sudo su - ubuntu
 ## Step 3. Initialised the control plane.
 ``` sh
 # Initialize Kubernates master by executing below commond.
+sudo modprobe br_netfilter
 sudo kubeadm init
 ```
 
@@ -105,7 +106,9 @@ kubeadm join 172.31.10.12:6443 --token cdm6fo.dhbrxyleqe5suy6e \
         --discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
 ```
 ## Step 8. If you have a pre-flight check error when you run "sudo kubeadm init", run this first command
-modprobe br_netfilter
+```sh
+sudo modprobe br_netfilter
+```
 ---
 ##What is the Kubernetes Node Not Ready Error?
 A Kubernetes node is a physical or virtual machine participating in a Kubernetes cluster, which can be used to run pods. When a node shuts down or crashes, it enters the NotReady state, meaning it cannot be used to run pods. All stateful pods running on the node then become unavailable.
