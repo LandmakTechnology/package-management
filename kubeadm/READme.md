@@ -90,11 +90,6 @@ kubectl get pods -A
 ```
 ## Step 6. Deploy the network plugin - weave network
 ```sh
-wget https://github.com/weaveworks/weave/releases/download/v2.6.0/weave-daemonset-k8s-1.11.yaml
-kubectl get pods -A
-kubectl get node
-```
-```sh
 ##deploy the network plugin - weave network
 kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 kubectl get pods -A
