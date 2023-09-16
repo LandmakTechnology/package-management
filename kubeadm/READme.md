@@ -206,4 +206,105 @@ mv  $HOME/.kube $HOME/.kube.bak
 mkdir $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
+#==========
+To install `kubeadm` on Ubuntu 20.04 and set up a Kubernetes cluster with a master node and a worker node, and then install the Weave network, follow these step-by-step instructions:
 
+**Prerequisites:**
+
+1. Two Ubuntu 20.04 machines (one for the master node and one for the worker node).
+2. Both machines should have a user with sudo privileges.
+
+**Step 1: Update System Packages**
+
+On both the master and worker nodes, ensure your system packages are up-to-date:
+
+```bash
+sudo apt update
+sudo apt upgrade -y
+```
+
+**Step 2: Install Docker**
+
+Kubernetes requires Docker as a container runtime. Install Docker on both nodes:
+
+```bash
+sudo apt install docker.io -y
+sudo systemctl enable docker
+sudo systemctl start docker
+```
+
+**Step 3: Install kubeadm, kubelet, and kubectl on Both Nodes**
+
+These are the Kubernetes components that you'll need on both the master and worker nodes:
+
+```bash
+sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+sudo sh -c 'echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list'
+
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
+
+sudo systemctl enable kubelet
+sudo systemctl start kubelet
+```
+
+**Step 4: Disable Swap (on both nodes)**
+
+Kubernetes doesn't work well with swap enabled, so you need to disable it:
+
+```bash
+sudo swapoff -a
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+```
+
+**Step 5: Initialize the Kubernetes Cluster (on the master node)**
+
+On the master node, you'll initialize the cluster using `kubeadm`:
+
+```bash
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+```
+
+Make a note of the `kubeadm join` command that's provided at the end of the initialization process. You'll need it to join the worker node.
+
+**Step 6: Set Up Kubernetes Configuration (on the master node)**
+
+Configure `kubectl` to use the cluster:
+
+```bash
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+**Step 7: Install Weave Network (on the master node)**
+
+Now, install the Weave network. You can use `kubectl` to apply the Weave network configuration:
+
+```bash
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+```
+
+**Step 8: Join the Worker Node to the Cluster (on the worker node)**
+
+On the worker node, use the `kubeadm join` command obtained in Step 5 to join the node to the cluster. It will look something like this:
+
+```bash
+sudo kubeadm join <MASTER_NODE_IP>:<PORT> --token <TOKEN> --discovery-token-ca-cert-hash sha256:<HASH>
+```
+
+Replace `<MASTER_NODE_IP>`, `<PORT>`, `<TOKEN>`, and `<HASH>` with the values from your `kubeadm init` output on the master node.
+
+**Step 9: Verify the Cluster (on the master node)**
+
+On the master node, check if the worker node has joined the cluster:
+
+```bash
+kubectl get nodes
+```
+
+Both the master and worker node should be in the "Ready" state.
+
+That's it! You've successfully installed `kubeadm`, set up a Kubernetes cluster with a master node and a worker node, and installed the Weave network. Your cluster is now ready for deploying applications and managing containers.
