@@ -283,7 +283,9 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 **Step 7: Install Weave Network (on the master node)**
 
 Now, install the Weave network. You can use `kubectl` to apply the Weave network configuration:
-
+```bash
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+```
 ```bash
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 ```
