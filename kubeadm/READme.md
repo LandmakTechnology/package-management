@@ -59,7 +59,7 @@ containerd config default | sudo tee /etc/containerd/config.toml
 # Restart containerd:
 sudo systemctl restart containerd
 # If you get error releated to kubernetes-cni if alreay exists install with out kubernetes-cni
-apt-get install -y kubelet kubeadm kubectl 
+sudo apt-get install -y kubelet kubeadm kubectl 
 # Enable and start kubelet service
 sudo systemctl daemon-reload 
 sudo systemctl start kubelet 
