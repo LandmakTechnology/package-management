@@ -91,6 +91,10 @@ kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/we
 kubectl get pods -A
 kubectl get node
 ```
+```sh
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+kubectl get pods -n kube-system -l name=weave-net
+```
 ## Copy kubeadm join token from the master and execute in Worker Nodes to join to cluster
 ```sh
 kubeadm join 172.31.10.12:6443 --token cdm6fo.dhbrxyleqe5suy6e \
