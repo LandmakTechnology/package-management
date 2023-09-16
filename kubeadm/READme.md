@@ -206,7 +206,8 @@ mv  $HOME/.kube $HOME/.kube.bak
 mkdir $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
-#==========
+
+** Installing Kubeadm on Ubuntu 20.04 **
 To install `kubeadm` on Ubuntu 20.04 and set up a Kubernetes cluster with a master node and a worker node, and then install the Weave network, follow these step-by-step instructions:
 
 **Prerequisites:**
