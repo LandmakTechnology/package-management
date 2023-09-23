@@ -214,7 +214,13 @@ To install `kubeadm` on Ubuntu 20.04 and set up a Kubernetes cluster with a mast
 
 1. Two Ubuntu 20.04 machines (one for the master node and one for the worker node).
 2. Both machines should have a user with sudo privileges.
+   
+**Step 0. Assign hostname &  login as ‘root’ user because the following set of commands need to be executed with ‘sudo’ permissions**
 
+```sh
+sudo hostnamectl set-hostname master
+sudo -i
+```
 **Step 1: Update System Packages**
 
 On both the master and worker nodes, ensure your system packages are up-to-date:
