@@ -69,8 +69,8 @@ sudo chmod -R 775 /opt/sonarqube/
 ```
 ### 6. start sonarQube server
 ```sh
-sh /opt/sonarqube/bin/linux-x86-64/sonar.sh start 
-sh /opt/sonarqube/bin/linux-x86-64/sonar.sh status
+sudo sh /opt/sonarqube/bin/linux-x86-64/sonar.sh start 
+sudo sh /opt/sonarqube/bin/linux-x86-64/sonar.sh status
 ```
 
 ### 7. Ensure that SonarQube is running and Access sonarQube on the browser
