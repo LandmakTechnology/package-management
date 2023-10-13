@@ -171,7 +171,7 @@ sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 On the master node, you'll initialize the cluster using `kubeadm`:
 
 ```bash
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+sudo kubeadm init 
 ```
 
 Make a note of the `kubeadm join` command that's provided at the end of the initialization process. You'll need it to join the worker node.
