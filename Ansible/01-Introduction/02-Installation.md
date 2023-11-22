@@ -13,7 +13,7 @@ https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.ht
 
 ## **Installing Ansible on Ubuntu**
 #
-  $ sudo hostname ansible
+  $ sudo hostname ansible \
   $ sudo adduser ansible \
   $ echo "ansible ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ansible \
   $ sudo su - ansible \
