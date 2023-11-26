@@ -28,7 +28,13 @@ resource "aws_instance" "example" {
   instance_type = each.value.instance_type
 
   count = 2  # Set the count to create two instances for each configuration
+
+tags = {
+    Name = "AppServerInstance-${each.key}"
+  }
+
 }
+
 
 
 
