@@ -1,0 +1,33 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.16"
+    }
+  }
+
+  required_version = ">= 1.2.0"
+}
+
+variable "instance_config" {
+  type    = map
+  default = {
+    "instance1" = { ami = "ami-12345678", instance_type = "t2.micro" }
+    "instance2" = { ami = "ami-87654321", instance_type = "t2.nano" }
+  }
+}
+
+provider "aws" {
+  region = "us-west-2"
+}
+
+resource "aws_instance" "example" {
+  for_each = var.instance_config
+
+  ami           = var.instance_config[each.key].ami
+  instance_type = var.instance_config[each.key].instance_type
+
+  tags = {
+    Name = "ExampleAppServerInstance-${each.key}"
+  }
+}
