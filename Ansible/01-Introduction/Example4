@@ -29,7 +29,7 @@ resource "aws_instance" "example" {
   instance_type = each.value.instance_type
   key_name      = each.value.key_name  # Add key_name to specify the key pair
 
-  count = 2  # Set the count to create two instances for each configuration
+  #count = 2  # DON'T SET COUNT WITH FOR_EACH. The "count" and "for_each" meta-arguments are mutually-exclusive, only one should be used to be explicit about the number of resources to be created.
 
   tags = {
     Name = "AppServerInstance-${each.key}"
