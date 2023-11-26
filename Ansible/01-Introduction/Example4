@@ -1,4 +1,16 @@
 # Add Key Pair
+/*
+Here are the steps to create a key pair using the AWS Management Console:
+
+Open the AWS Management Console.
+Navigate to the EC2 Dashboard.
+In the left sidebar, click on "Key Pairs" under "Network & Security."
+Click the "Create Key Pair" button.
+Provide a name for the key pair, e.g., 'key2'.
+Select a key pair file format (usually PEM), and then click "Create Key Pair."
+After creating the key pair, you can use its name ('key2') in your Terraform configuration.
+*/
+
 terraform {
   required_providers {
     aws = {
