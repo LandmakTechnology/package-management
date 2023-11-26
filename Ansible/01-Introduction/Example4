@@ -13,8 +13,8 @@ terraform {
 variable "instance_config" {
   type    = map
   default = {
-    "instance1" = { ami = "ami-0efcece6bed30fd98", instance_type = "t2.micro", key_name = "key1" }
-    "instance2" = { ami = "ami-08e2c1a8d17c2fe17", instance_type = "t2.nano", key_name = "key2" }
+    "instance1" = { ami = "ami-0efcece6bed30fd98", instance_type = "t2.micro", key_name = "classkey" }
+    "instance2" = { ami = "ami-08e2c1a8d17c2fe17", instance_type = "t2.nano", key_name = "classkey" }
   }
 }
 
