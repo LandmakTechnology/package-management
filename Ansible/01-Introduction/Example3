@@ -22,15 +22,14 @@ provider "aws" {
 }
 
 resource "aws_instance" "example" {
-  for_each = var.instance_config
+  for_each = { for key, value in var.instance_config : key => value }
 
   ami           = each.value.ami
   instance_type = each.value.instance_type
 
   count = 2  # Set the count to create two instances for each configuration
-
-tags = {
-    Name = "AppServerInstance-${each.key}"
-  }
 }
+
+
+
 
