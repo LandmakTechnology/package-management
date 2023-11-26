@@ -1,0 +1,36 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.16"
+    }
+  }
+
+  required_version = ">= 1.2.0"
+}
+
+variable "instance_config" {
+  type    = map
+  default = {
+    "instance1" = { ami = "ami-0efcece6bed30fd98", instance_type = "t2.micro" }
+    "instance2" = { ami = "ami-08e2c1a8d17c2fe17", instance_type = "t2.nano" }
+  }
+}
+
+provider "aws" {
+  region = "us-west-2"
+}
+
+resource "aws_instance" "example" {
+  for_each = var.instance_config
+
+  ami           = each.value.ami
+  instance_type = each.value.instance_type
+
+  count = 2  # Set the count to create two instances for each configuration
+
+tags = {
+    Name = "AppServerInstance-${each.key}"
+  }
+}
+
