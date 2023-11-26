@@ -19,6 +19,6 @@ resource "aws_instance" "app_server" {
   count         = 3
 
   tags = {
-    Name = "ExampleAppServerInstance"
+    Name = "AppServer"
   }
 }
