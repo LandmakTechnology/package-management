@@ -15,6 +15,7 @@
 ```sh
 sudo hostnamectl set-hostname maven
 sudo su - ubuntu
+sudo chown -R ubuntu:ubuntu /opt   
 cd /opt
 sudo apt-get install wget vim tree unzip git-all -y
 sudo apt update
