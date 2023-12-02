@@ -16,14 +16,14 @@
 sudo hostnamectl set-hostname maven
 sudo su - ubuntu
 cd /opt
-sudo apt-get install wget nano tree unzip git-all -y
+sudo apt-get install wget vim tree unzip git-all -y
 sudo apt update
 sudo apt install openjdk-8-jdk -y
 java -version
 ```
 ### Set the JAVA_HOME environment variable by opening the .bashrc file:
 ```sh
-nano ~/.bashrc
+vim ~/.bashrc
 ```
 
 ## Add the following line to the file:
