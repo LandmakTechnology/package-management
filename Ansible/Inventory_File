@@ -16,3 +16,14 @@ your_target_group:
     group_custom_variable: "Group Value" 
 
 
+#########################################
+You can then use these group variables in your playbook:
+   ```yaml
+   - name: Use external group variable
+     hosts: appserver
+     tasks:
+       - name: Display the group variable
+         debug:
+           var: group_custom_variable
+   ```
+   Here, `group_custom_variable` is an external variable defined for the group.
