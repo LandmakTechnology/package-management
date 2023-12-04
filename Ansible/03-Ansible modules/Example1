@@ -1,0 +1,70 @@
+# Below is an example of an Ansible playbook that installs different tools on designated hosts
+# (`mavenserver`, `sonarserver`, `jenkinsserver`, and `tomserver`) based on the Linux distribution (Ubuntu or Red Hat). 
+# The playbook uses conditional statements to determine the distribution and install the appropriate tool.
+
+```yaml
+---
+- name: Install Tools on Different Servers
+  hosts: 
+    - mavenserver
+    - sonarserver
+    - jenkinsserver
+    - tomserver
+
+  tasks:
+    - name: Check Linux Distribution
+      ansible.builtin.command: "cat /etc/os-release"
+      register: os_info
+
+    - name: Install Maven on Ubuntu
+      ansible.builtin.package:
+        name: maven
+        state: present
+      when: "'Ubuntu' in os_info.stdout and 'mavenserver' in inventory_hostname"
+
+    - name: Install Maven on Red Hat
+      ansible.builtin.package:
+        name: apache-maven
+        state: present
+      when: "'Red Hat' in os_info.stdout and 'mavenserver' in inventory_hostname"
+
+    - name: Install SonarQube on Ubuntu
+      ansible.builtin.package:
+        name: sonarqube
+        state: present
+      when: "'Ubuntu' in os_info.stdout and 'sonarserver' in inventory_hostname"
+
+    - name: Install SonarQube on Red Hat
+      ansible.builtin.package:
+        name: sonarqube
+        state: present
+      when: "'Red Hat' in os_info.stdout and 'sonarserver' in inventory_hostname"
+
+    - name: Install Jenkins on Ubuntu
+      ansible.builtin.package:
+        name: jenkins
+        state: present
+      when: "'Ubuntu' in os_info.stdout and 'jenkinsserver' in inventory_hostname"
+
+    - name: Install Jenkins on Red Hat
+      ansible.builtin.package:
+        name: jenkins
+        state: present
+      when: "'Red Hat' in os_info.stdout and 'jenkinsserver' in inventory_hostname"
+
+    - name: Install Tomcat on Ubuntu
+      ansible.builtin.package:
+        name: tomcat
+        state: present
+      when: "'Ubuntu' in os_info.stdout and 'tomserver' in inventory_hostname"
+
+    - name: Install Tomcat on Red Hat
+      ansible.builtin.package:
+        name: tomcat
+        state: present
+      when: "'Red Hat' in os_info.stdout and 'tomserver' in inventory_hostname"
+```
+
+# This playbook uses the `ansible.builtin.command` module to execute a command that retrieves information about the 
+# Linux distribution (`/etc/os-release`). Then, based on the result, it installs the required packages using the 
+# `ansible.builtin.package` module. Adjust the package names and conditions according to your specific requirements.
