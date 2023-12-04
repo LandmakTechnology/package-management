@@ -1,0 +1,11 @@
+---
+- name: Debugging with Conditional Statements and Variables
+  hosts: appserver
+  vars:
+    my_variable: "Hello, World!"  # Define the variable here
+
+  tasks:
+    - name: Debug Message
+      debug:
+        msg: "The value of my_variable is {{ my_variable }}"
+      when: my_variable is defined
