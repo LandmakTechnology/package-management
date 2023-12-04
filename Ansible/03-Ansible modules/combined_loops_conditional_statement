@@ -1,0 +1,30 @@
+---
+- name: Install packages on multiple hosts
+  hosts: all
+  become: true  # Run tasks with elevated privileges
+
+  vars:
+    package_cache_update:
+      - python3-apt
+
+    packages_to_install:
+      - name: nginx
+        state: present
+      - name: apache2  # Correct package name for Apache
+        state: present
+
+  tasks:
+    - name: Update package cache
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: latest
+      loop: "{{ package_cache_update }}"
+
+    - name: Install packages
+      ansible.builtin.package:
+        name: "{{ item.name }}"
+        state: "{{ item.state }}"
+      loop: "{{ packages_to_install }}"
+      when: "'apache2' in item.name and ansible_distribution == 'Ubuntu'"
+
+
