@@ -1,0 +1,20 @@
+---
+- name: Modify user properties and create devops group
+  hosts: all
+  tasks:
+    - name: Ensure devops group exists
+      group:
+        name: devops
+        state: present
+
+    - name: Ensure user 'itoro' is a member of the 'devops' group
+      user:
+        name: itoro
+        groups: devops
+        state: present
+
+    - name: Change user 'itoro''s home directory to /home/ubuntu
+      user:
+        name: itoro
+        home: /home/ubuntu
+        state: present
