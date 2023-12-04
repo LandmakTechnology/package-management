@@ -1,0 +1,18 @@
+---
+- name: Conditional Directory Check
+  hosts: your_target_hosts
+  tasks:
+    - name: Check if the directory exists
+      stat:
+        path: /path/to/your/directory
+      register: directory_exists
+
+    - name: Display a message based on the directory existence
+      debug:
+        msg: "The directory exists."
+      when: directory_exists.stat.exists
+
+    - name: Display a different message if the directory doesn't exist
+      debug:
+        msg: "The directory does not exist."
+      when: not directory_exists.stat.exists
