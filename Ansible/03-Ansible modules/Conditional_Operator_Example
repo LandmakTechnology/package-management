@@ -1,0 +1,11 @@
+---
+- name: Conditional Operator Example
+  hosts: appserver
+  vars:
+    my_variable: 15  # Define the variable here
+
+  tasks:
+    - name: Check if the variable is greater than 10
+      debug:
+        msg: "The variable is greater than 10."
+      when: my_variable > 10
