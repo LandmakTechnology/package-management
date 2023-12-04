@@ -1,0 +1,8 @@
+---
+- name: Delete a user
+  hosts: all
+  tasks:
+    - name: Ensure user 'itoro' is absent
+      user:
+        name: itoro
+        state: absent
