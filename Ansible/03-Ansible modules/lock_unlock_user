@@ -1,0 +1,13 @@
+- name: Lock or unlock a user account
+  hosts: your_target_hosts
+  become: true
+  tasks:
+    - name: Lock a user account
+      user:
+        name: user_to_lock
+        state: locked
+
+    - name: Unlock a user account
+      user:
+        name: user_to_unlock
+        state: present
