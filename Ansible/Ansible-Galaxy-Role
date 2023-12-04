@@ -1,0 +1,28 @@
+#1. **Install Ansible Galaxy Role:**
+
+   #Start by installing the Ansible Galaxy roles for Apache and Nginx. You can use the `ansible-galaxy` command to install roles from the Ansible Galaxy repository.
+
+   ```bash
+   ansible-galaxy install geerlingguy.apache
+   ansible-galaxy install geerlingguy.nginx
+   ```
+#These commands will download the Apache and Nginx roles created by geerlingguy, which are well-maintained and widely used.
+
+#In this playbook, we specify that it should run on hosts belonging to the `web_servers` group. It uses the roles we installed in the previous step to install Apache and Nginx.
+
+
+#2. **Create an Ansible Playbook:**
+
+#Now, create a playbook that uses the roles to install Apache and Nginx on separate hosts. Create a YAML file, e.g., `install_web_servers.yml`, with the following content:
+
+   ```yaml
+   ---
+   - name: Install Apache and Nginx
+     hosts: web_servers
+     become: yes  # This is to run tasks with sudo (root) privileges.
+
+     roles:
+       - geerlingguy.apache
+       - geerlingguy.nginx
+   ```
+
