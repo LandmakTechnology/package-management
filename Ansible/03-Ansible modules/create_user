@@ -1,0 +1,11 @@
+---
+- name: Create a user
+  hosts: all
+  tasks:
+    - name: Ensure the user 'itoro' exists
+      user:
+        name: itoro
+        state: present
+        comment: "New User"
+        groups: users
+        password: "{{ 'new_password' | password_hash('sha512') }}"
