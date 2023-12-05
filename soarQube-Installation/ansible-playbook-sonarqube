@@ -5,10 +5,15 @@ To install SonarQube on an Ubuntu server using Ansible, you can create an Ansibl
 
 ---
 - name: Install SonarQube on Ubuntu
-  hosts: your_ubuntu_server
+  hosts: sonar
   become: true
 
   tasks:
+    - name: Update package lists
+      become: yes
+      apt:
+        update_cache: yes
+
     - name: Install prerequisites
       apt:
         name: "{{ item }}"
@@ -19,14 +24,14 @@ To install SonarQube on an Ubuntu server using Ansible, you can create an Ansibl
 
     - name: Download SonarQube
       get_url:
-        url: "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-{{ sonarqube_version }}.zip"
-        dest: "/tmp/sonarqube-{{ sonarqube_version }}.zip"
+        url: "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-{{ 7.8 }}.zip"
+        dest: "/tmp/sonarqube-{{ 7.8 }}.zip"
         mode: 0644
 
     - name: Extract SonarQube
-      command: "unzip /tmp/sonarqube-{{ sonarqube_version }}.zip -d /opt/"
+      command: "unzip /tmp/sonarqube-{{ 7.8 }}.zip -d /opt/"
       args:
-        creates: "/opt/sonarqube-{{ sonarqube_version }}"
+        creates: "/opt/sonarqube-{{ 7.8 }}"
 
     - name: Set up SonarQube as a systemd service
       template:
@@ -39,6 +44,7 @@ To install SonarQube on an Ubuntu server using Ansible, you can create an Ansibl
       systemd:
         name: sonarqube
         state: started
+
 
 ```
 
@@ -56,8 +62,8 @@ After=syslog.target network.target
 [Service]
 Type=forking
 
-ExecStart=/opt/sonarqube-{{ sonarqube_version }}/bin/linux-x86-64/sonar.sh start
-ExecStop=/opt/sonarqube-{{ sonarqube_version }}/bin/linux-x86-64/sonar.sh stop
+ExecStart=/opt/sonarqube-{{ 7.8 }}/bin/linux-x86-64/sonar.sh start
+ExecStop=/opt/sonarqube-{{ 7.8 }}/bin/linux-x86-64/sonar.sh stop
 
 User=sonarqube
 Group=sonarqube
