@@ -1,0 +1,79 @@
+To install SonarQube on an Ubuntu server using Ansible, you can create an Ansible playbook. Below is a basic example of such a playbook:
+
+```yaml
+# sonarqube-installation.yml
+
+---
+- name: Install SonarQube on Ubuntu
+  hosts: your_ubuntu_server
+  become: true
+
+  tasks:
+    - name: Install prerequisites
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - openjdk-11-jdk
+        - unzip
+
+    - name: Download SonarQube
+      get_url:
+        url: "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-{{ sonarqube_version }}.zip"
+        dest: "/tmp/sonarqube-{{ sonarqube_version }}.zip"
+        mode: 0644
+
+    - name: Extract SonarQube
+      command: "unzip /tmp/sonarqube-{{ sonarqube_version }}.zip -d /opt/"
+      args:
+        creates: "/opt/sonarqube-{{ sonarqube_version }}"
+
+    - name: Set up SonarQube as a systemd service
+      template:
+        src: sonarqube.service.j2
+        dest: /etc/systemd/system/sonarqube.service
+      notify: Start SonarQube
+
+  handlers:
+    - name: Start SonarQube
+      systemd:
+        name: sonarqube
+        state: started
+
+```
+
+Make sure to replace `your_ubuntu_server` with the actual target server hostname or IP address.
+
+You'll also need to create a Jinja2 template file for the systemd service (`sonarqube.service.j2`):
+
+```jinja
+# sonarqube.service.j2
+
+[Unit]
+Description=SonarQube service
+After=syslog.target network.target
+
+[Service]
+Type=forking
+
+ExecStart=/opt/sonarqube-{{ sonarqube_version }}/bin/linux-x86-64/sonar.sh start
+ExecStop=/opt/sonarqube-{{ sonarqube_version }}/bin/linux-x86-64/sonar.sh stop
+
+User=sonarqube
+Group=sonarqube
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+
+In this playbook:
+
+- `apt` is used to install the required dependencies (Java and unzip).
+- `get_url` is used to download SonarQube from the official source.
+- `command` is used to extract SonarQube to the `/opt/` directory.
+- A systemd service is set up using a Jinja2 template.
+
+You should also define the `sonarqube_version` variable either in the playbook or in an inventory file.
+
+Remember to customize the playbook and templates based on your specific requirements and environment.
