@@ -1,1 +1,57 @@
 
+#!/bin/bash
+
+# Update package list
+sudo apt update
+
+# Install wget and unzip
+sudo apt install -y wget unzip
+
+# Install OpenJDK 17
+sudo apt install -y openjdk-17-jdk
+
+# Set SonarQube version
+SONARQUBE_VERSION="9.1.0.47736"
+
+# Set installation directory
+INSTALL_DIR="/opt"
+
+# Download SonarQube
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-${SONARQUBE_VERSION}.zip -P ${INSTALL_DIR}
+
+# Unzip SonarQube
+unzip ${INSTALL_DIR}/sonarqube-${SONARQUBE_VERSION}.zip -d ${INSTALL_DIR}
+
+# Create a symbolic link
+ln -s ${INSTALL_DIR}/sonarqube-${SONARQUBE_VERSION} ${INSTALL_DIR}/sonarqube
+
+# Add a dedicated user for SonarQube
+sudo useradd -r -s /bin/nologin sonarqube
+
+# Adjust permissions
+sudo chown -R sonarqube:sonarqube ${INSTALL_DIR}/sonarqube-${SONARQUBE_VERSION}
+
+# Configure SonarQube to run as a service
+cat <<EOL | sudo tee /etc/systemd/system/sonarqube.service
+[Unit]
+Description=SonarQube service
+After=syslog.target network.target
+
+[Service]
+ExecStart=${INSTALL_DIR}/sonarqube/bin/linux-x86-64/sonar.sh start
+ExecStop=${INSTALL_DIR}/sonarqube/bin/linux-x86-64/sonar.sh stop
+User=sonarqube
+Group=sonarqube
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+# Reload systemd and start SonarQube service
+sudo systemctl daemon-reload
+sudo systemctl enable sonarqube
+sudo systemctl start sonarqube
+
+# Display status
+sudo systemctl status sonarqube
