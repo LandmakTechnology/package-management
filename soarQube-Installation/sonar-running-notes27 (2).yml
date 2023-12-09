@@ -1,0 +1,527 @@
+
+sudo yum install httpd 
+sudo systemctl start httpd 
+sudo echo '<h1>Welcome to LandmakTechnology</h1>' >> /var/www/html/index.html 
+sudo echo '<h2>Java application for a fintech</h2>' >> /var/www/html/index.html 
+sudo echo '<h2>Proxy to boa-appServers</h2>' >> /var/www/html/index.html 
+
+Multi-tier application deployment:
+                Frontend-tier                  Backend-Tier
+               LB/webServer-Tier    appServers-Tier        db-tier
+  users---------> webServer/LB ----->appServers---------->Databases
+
+  xml (create your tags)
+     <id>01245</id>
+
+  html (use available/predefined tags)
+     <h1>Welcome to LandmakTechnology</h1>
+          <h2>Proxy to boa-appServers</h2>
+
+Software testing:
+  unit testing --- Maven 
+  functional 
+  regression 
+  perfromance 
+  penetration 
+
+echo "DevOps is good"
+
+sonarqube:
+What is SonarQube?
+SonarQube is a Code Quality Assurance tool that collects and analyzes source code, and provides reports for the code quality of your project. It combines static and dynamic analysis tools and enables quality to be measured continually over time.
+
+Overview
+Once the SonarQube platform has been installed, you’re ready to install a scanner and begin creating projects. To do that, you must install and configure the scanner that is most appropriate for your needs. Do you build with:
+
+Gradle – SonarScanner for Gradle
+.NET – SonarScanner for .NET
+Maven – use the SonarScanner for Maven
+Jenkins – SonarScanner for Jenkins
+Azure DevOps – SonarQube Extension for Azure DevOps
+Ant – SonarScanner for Ant
+anything else (CLI) – SonarScanner
+
+Why should we use SonarQube?:
+SonarQube reduces the risk of software development within a very short amount of time. It detects bugs in the code automatically and alerts developers to fix them before rolling it out for production. SonarQube also highlights the complex areas of code that are less covered by unit tests
+
+   git/GitHub  
+   src Codes  -- 9,000 lines of code  
+   JUnit Tests Cases 3,000 unit test cases  
+   buildScript-pom.xml 
+   javaProjects 
+
+maven :
+  mvn package
+     validation 
+     compilation 
+     JUnit-Testing [runs 3000 test cases = pass]
+     packaging[jav/war/ear]
+
+sonarqube/Benchmarking:
+comparing actual results against the benchnark/standards
+1. How many unit test cases were runned?
+   How many test cases should have being runned? 
+
+2. Is our code readable with ease? 
+    ----> code smells 
+
+3. Is our code portable [environment independent]?
+    -- if not code smells / hard coding 
+
+4. Are the vulnerabilities in the code ?
+    ---> if they are then --- 
+       password -- any 4 characters 
+             1234
+
+
+
+rules:
+
+bugs 
+
+maven:
+mvn package 
+    v / c / t / p 
+
+    jvm = 
+    javac 
+
+  yum install maven 
+
+  Globally 
+   sudo vi /etc/profile 
+  specific user 
+    vi .bashrc 
+    vi .bash_profile 
+
+
+SonarQube / SonarCloud
+
+Hello
+
+SonarQube Server:
+  Code coverage
+    % of the code  tested by unit test cases
+
+HelloWorld.java
+	    10,000lines = 10k 
+       7,000 are tested = SME 
+       7000/10000*100 = 70%
+ SourceCode (src) :
+  mvn package:
+
+      validation / 
+         plugins / Dependencies / External libraries (remoteRepo or central repo)   
+      
+      compilation / 
+         plugins / Dependencies / External libraries (remoteRepo or central repo)  
+
+      testing / (Quality Gate)
+         plugins / Dependencies / External libraries (remoteRepo or central repo)  
+         
+         run Junit Test Cases  
+          Failure = maven won't buid 
+          Passes = maven builds 
+             mvn package DSkip 
+      
+      packaging(jar/war/ear)  
+
+CodeQuality:
+  boa =  code --> boa-appServers   
+        build (maven (testing)) 
+               tests = fail 
+               no packages will be created
+               mvn package 
+                  RUNS 600 TESTS & 600 PASSED 
+                     app.war is created 
+        CODE Quality (SonarQube)
+          did Developers ignore any unit test cases 
+            code coverage
+            scan your system identify viruses and remove them 
+
+Application code:
+HelloWorld.java() {
+  1,000 lines lines of code 
+}	  
+JUnit TEST CASES:
+HelloWorldTest.java() {
+  600 unit test-cases 
+  code coverage = 60%  = FAIL 
+   expected code coverage = atleast 80%
+}
+
+IQ:
+ What significant contribution have you introduce in LT/Team? 
+    6 YEARS 
+      SonarQube 
+      Terraform
+
+code coverage = 7,000/10,000*100%  =  70%  :
+
+Code Quality expectations:
+• Duplicated code
+• Coding standards
+• Unit tests
+• Complex code
+• Comments
+• Potential Bugs
+• Architecture & Design
+Functions:
+
+  Rules/Benchmark/standards:
+    code coverage --> must be atleast 80%
+        1000 LINES 
+         800+ UNIT TEST CASES 
+    duplicate lines must be less than 5%
+      Functions: 
+        userMgt{
+          useradd $username
+          passwd $username
+        }
+
+        fileMgt{
+          touch $filename 
+          chmod +x $filename
+        }
+  import userMgt 
+  import fileMgt 
+
+ import user 
+
+expected code coverage for best practice should be atleast 80%
+
+Rules:
+                   standards    actual    Analysis
+Lines                            1,000
+JUnitTestcase                      680
+code coverage        85%         68%      Failed 
+duplicate lines      <5%          8%      Failed 
+bugs                  0           5       Failed
+vulnerabilities       0           15      Failed
+
+code analysis compares standards against actual results:
+
+
+Code Review:
+  Validating standards against src (actual results)
+
+echo "This is note 10"
+
+ sudo yum install net-tools -y 
+  netstat -tulpn 
+SonarQube:
+ It was originally written in Java to support Java codes ONLY
+
+Today SonarQube supports over 20 langauges.
+
+  Code Quality Reports  = 
+    databases  = 
+      volume / hard disk / hard drive (25GB)  
+        Required 40GB 
+
+  Easily readable
+
+SonarQube:
+
+  1. sonarqube Scanner: 
+
+  2. sonarqube server :
+       Compute engine 
+       database 
+       search engine - elasticsearch
+       web-server
+
+ Hello, My name is Simon, with ID:001457, . 
+ 
+   USES ROWS AND columns  
+  Excel / Word / Access
+  SN    NAME      ID 
+  1.    SIMON     001
+  2.    Grace     002
+  3.    Elvis     003
+  4.    Olu       004 
+  5.    Terese    005 
+boa--- customer account details
+  cID     cNAME     A/C bal 
+  014      Paul     2,000 
+  088      Israel   6,000
+Structured data :
+Cid Name  a/c no  a/c balance
+14014 Paul  1245  2,000
+15015 Grace 1255  5,000
+16016 Erica 1266  7,000
+
+unStructured data:
+  JSON format:
+  {
+    id: 1245
+    name: 'James' 
+  }
+ {
+    SN: 6644
+    name: 'Olu'
+  }
+
+Databases:
+  To store Code Quality Reports 
+
+Structured data :
+RDS - Relational databases or SQL:
+  SQL = Structured qwery language 
+Data is written in tables format (rows and columns)
+  SQL is a langague use to qwery  RDS.   :
+    Oracle
+    mySQL  - OS
+    PostgreSql  - OS
+    MSSQL (MicrosoftSQL)
+    DB2
+    Sybase
+    MySQL, Oracle, Microsoft SQL Server, PostgreSQL
+  =========
+   USES ROWS AND columns  
+  Excel / Word / Access
+  SN    NAME      ID 
+  1.    SIMON     001
+  2.    Grace     002
+  3.    Elvis     003
+  4.    Olu       004 
+  5.    Terese    005 
+
+  SN  NAME  ID
+1 BODE  LT01
+2 MERCY LT02
+3 PAUL  LT03
+
+
+Un Structured data  :
+ ['Jose 001', '4 Beatrice', 'Mercy 005'] 
+
+noSql or nonRDS:
+Data is written in Json format.
+  {
+    name: "simon"
+    id: "MLT0012547"
+    SN: "01"
+  }
+Examples:
+    MongoDB
+    Cassandra
+    CouchDB, 
+    CouchBase, 
+    HBase, 
+    Redis, 
+    Riak, 
+    Neo4J are the popular NoSQL databases.
+
+connectDatabase.java() {
+
+} 
+
+getConnectDatabase.java(){
+  if else 
+
+  /* 
+
+  */
+ try 
+ catch 
+ finally 
+
+}
+
+Software Engineers / Developers write codes.
+
+Who performs code review in your projects?
+  Sr. Software Engineers   
+
+SonarQube has:
+ 
+ Free version  :
+  Java,  = 30,000 lines 
+  JavaScript,
+  C#, 
+  TypeScript,
+  Kotlin,
+  Ruby, Go, Scala, Flex, Python, PHP, HTML, CSS, XML and 
+  VB.NET
+
+  Java, C#, JavaScript, TypeScript, 
+  CloudFormation, Terraform, Kotlin, Ruby,
+  Go, Scala, Flex, Python,
+  PHP, HTML, CSS, XML and VB.NET
+ Installation:
+  https://docs.sonarqube.org/latest/requirements/requirements/
+  https://www.sonarqube.org/downloads/
+
+https://github.com/itoroukpe/package-management/blob/master/soarQube-Installation/READme.md
+ 
+   3.83.86.27
+   ssh ec2-user@3.83.86.27 
+      you can connect into the server using password or ssh-publicKey
+
+ssh -i "C27.pem" ec2-user@ec2-3-83-86-27.compute-1.amazonaws.com
+
+What is the sonarqube home directory?
+  This is where the sonarqube Software is extracted = /opt/sonarqube
+    wget anb unzip 
+    /opt/sonarqube?
+
+SonarQube directory Structure:
+  bin [ sonar.sh] 
+    sh sonar.sh start | stop | restart | status
+    sh  sonar.sh start 
+             is a switch case bash shell script
+  conf [sonar.properties] 
+  COPYING  
+  data  
+  elasticsearch  
+  extensions  
+  lib  
+  logs  
+  temp  
+  web
+
+3.83.86.27:9000
+What version of SonarQube do you use in production:? 7.8 
+   stable version 
+default port for SonarQube is 9000
+default login:
+   login(username) = admin
+   password        = admin 
+
+
+
+https://github.com/itoroukpe/maven-web-application
+
+clone in the build Server 
+Test and Build in the build Server
+
+mvn clean -----> deletes the old builds 
+mvn validate 
+mvn compile 
+mvn test
+mvn package 
+mvn sonar:sonar 
+    sonar is the maven sonarqube glugin
+    sonar is the goal 
+mvn deploy 
+SonarQube server address:   172.31.87.34
+port number: 9000
+  login credentials 
+     login(username) = admin
+     password        = admin 
+
+        <properties>
+                <jdk.version>1.8</jdk.version>
+                <spring.version>5.1.2.RELEASE</spring.version>
+                <junit.version>4.11</junit.version>
+                <log4j.version>1.2.17</log4j.version>
+                <sonar.host.url>http:172.31.87.34:9000/</sonar.host.url>
+                <sonar.login>admin</sonar.login>
+                <sonar.password>admin</sonar.password>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        </properties>
+
+        <properties>
+                <jdk.version>1.8</jdk.version>
+                <spring.version>5.1.2.RELEASE</spring.version>
+                <junit.version>4.11</junit.version>
+                <log4j.version>1.2.17</log4j.version>
+                <sonar.host.url>http:172.31.87.34:9000/</sonar.host.url>
+                <sonar.login>8584e56bfe7ef0b01c5c7fa8cb97c9b521b53fe6</sonar.login>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        </properties>
+
+http://3.83.86.27:9000/projects
+
+Bugs = 0
+Vulnerabilities = 1
+Code Smells = 6 
+code Coverage = 0.0%
+Duplications = 0.0%
+
+scanner
+compute engine
+elastic search
+web server  
+Database
+
+How do we configure username and password for sonarqube?
+SonarQube performs code CodeQuality analysis and detects 
+problems/issues that should be resolved by Developers
+  email and slack channel 
+
+install:
+  yum install maven 
+  apt install 
+  choco install maven 
+
+DOES SONAR AND NGINX CONNECT AT SOME POINT
+
+
+Sr. DevSecOps = 180KUSD
+Sr. Dev-Sec-Ops 
+  High Level Documentation
+
+
+Explain your Benchmark for Code Quality?
+How do you create Quality Gates and Quality Profiles in SonarQube?
+  
+Rules --- 
+  Use functions in development to avoid Duplications
+  use Comments for Maintainability and understandability 
+  Write portable codes ie avoid hard coding
+ Bugs = 0
+ Vulnerabilities = 1
+ Code Smells = 6 
+ code Coverage = 0.0%
+ Duplications = 0.0% 
+Hard coded:
+ database
+   Username: devapp 
+   password: admin123 
+
+Dynamic: 
+ database
+   Username: $username 
+   password: $password
+
+Quality Profile: 
+  collection of rules 
+  Parent = common rules 
+
+Quality Gates = 
+
+ walmart 
+ paypal 
+ ebay 
+ boa
+    General Quality benchnark --> parent Quality Profile 
+    10 rules 
+
+Sonar way is default 
+
+Benchmark:
+Coverage on New Code    85%
+  code coverage = testLines/codeLines*100 
+      code = 1000 LINEs 
+      testCases = 700 
+Duplicated Lines on New Code  4% 
+Maintainability Rating on New Code  must be  A
+Reliability Rating on New Code  is worse than A
+Security Rating on New Code 
+[INFO] Quality profile for java: Sonar way
+[INFO] Quality profile for jsp:  Sonar way
+[INFO] Quality profile for xml:  Sonar way
+sonarcloud:
+https://sonarcloud.io/explore/projects?sort=-analysis_date
+
+
+IPaddress:portNumber 
+ Username:
+ password:
+
+
+git clone https://github.com/LandmakTechnology/maven-web-application
