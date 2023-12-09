@@ -38,7 +38,10 @@ sudo chmod 777 -R /opt/tomcat9
 ```sh
 sudo chmod 777 -R /opt/tomcat9
 sudo chown ec2-user -R /opt/tomcat9
+```
+
 ### start tomcat
+```sh
 sh /opt/tomcat9/bin/startup.sh
 # create a soft link to start and stop tomcat
 # This will enable us to manage tomcat as a service
