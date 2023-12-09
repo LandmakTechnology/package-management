@@ -1,0 +1,519 @@
+Lesson 4. Tomcat
+o	Introduction 
+o	Difference between App server and Web server 
+o	Understand of Web Servers, App Servers and DataBase Servers 
+o	Installation (In Windows - Extraction, In Linux Installation)
+o	Directory structure • Start the Tomcat server 
+o	Users creation • Stop the server 
+o	Roles 
+o	Port number change 
+o	Application Deployment 
+	Through Admin Console 
+	Copy artifact into webapps folder 
+o	Tomcat Tuning 
+o	Data source Creation 
+
+How to access your virtual machine using ssh
+ssh -i "C27.pem" ec2-user@ec2-3-82-241-210.compute-1.amazonaws.com
+ssh -i c27.pem ec2-user@18.207.210.70
+===================================================================
+How do you deploy web, an enterprise, and a standalone-application?
+
+What is Tomcat server and how does it work? 
+------------------------------------------
+It implements the Java specifications on the web server that works as the remote controller to the physical computer design to server the files. 
+Using Internet connectivity, Tomcat renders and presents the data to the web application. This way, you can access data from the web server anywhere worldwide.
+
+Deployment is the term used for the process of installing a web application (either a 3rd party WAR or your own custom web application) into the Tomcat server.
+
+Web application deployment may be accomplished in a number of ways within the Tomcat server.
+
+1. Statically; the web application is setup before Tomcat is started
+2. Dynamically; by directly manipulating already deployed web applications (relying on auto-deployment feature) or remotely by using the Tomcat Manager web application
+The Tomcat Manager is a web application that can be used interactively (via HTML GUI) or programmatically (via URL-based API) to deploy and manage web applications.
+--------------------------------------------------
+maven-standalone-application
+   java -jar appName.jar 
+
+    .jar
+
+    java -jar packageName.jar
+
+    java -jar user-banking.jar 
+      java JDK 1.7+
+
+maven-web-application
+    app.war 
+    Tomcat
+    JBoss/WildFly
+
+maven-enterprise-application
+      app.ear
+    JBoss/WildFly
+ aa.com 
+
+ 
+ multi-tier applications : DMZ 
+   backend tier  : Militarised zone = MZ 
+      applications tier 
+      data base tier 
+      
+   frontend tier  : D-Militarised zone = DMZ 
+      webServers-- 
+      LoadBalancers 
+                            war & ear 
+
+Application Server: 
+
+  - IBM WebSphere Application Server (WAS)  --> IBM
+  
+  - Apache Tomcat   --> Apache  --> OS
+  
+  - JBoss/WildFly   --> Redhat/IBM 
+    1.0.0 to 7.0.9
+    1.x to 7.x --> JBoss
+    from 8.x-->    WildFly
+         versioning  
+    git branch and git tag 
+
+  - WebLogic --> Oracle  
+
+
+IQ: What is the d/f b/w JBoss/WildFly and Tomcat? 
+    vendors: Tomcat==Apache  
+             JBoss=Redhat  
+    Applications:          
+        JBoss: Web applications .WAR & Enterprise applications .ear 
+        Tomcat: web applications ONLY 
+
+
+
+ sudo hostname tomcat 
+ 
+ https://tomcat.apache.org/download-10.cgi
+
+Tomcat Installation:
+---------------------
+Lab - Tomcat Installation
+=======================================
+# install Java JDK 1.8+ as a pre-requisit for tomcat to run.
+cd /opt 
+sudo yum install git wget -y
+sudo yum install java-1.8.0-openjdk-devel -y
+# Download tomcat software and extract it.
+sudo yum install unzip -y
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.27/bin/apache-tomcat-10.0.27.tar.gz
+sudo tar -xvf apache-tomcat-10.0.27.tar.gz
+sudo rm apache-tomcat-10.0.27.tar.gz
+sudo mv apache-tomcat-10.0.27 tomcat10
+sudo chmod 777 -R /opt/tomcat10
+sudo sh /opt/tomcat10/bin/startup.sh
+# create a soft link to start and stop tomcat
+sudo ln -s /opt/tomcat10/bin/startup.sh /usr/bin/starttomcat
+sudo ln -s /opt/tomcat10/bin/shutdown.sh /usr/bin/stoptomcat
+sudo starttomcat
+========================================
+https://tomcat.apache.org/download-90.cgi
+https://downloads.apache.org/tomcat/tomcat-9/v9.0.46/bin/apache-tomcat-9.0.46.tar.gz
+
+ Java is the pre-requisit for Tomcat 
+
+THD: The Tomcat Home Directory is 
+     where the tomcat software is extracted 
+        wget   to download tomcat  
+        tar or unzip to extract
+Where us your THD located in your environment?
+     /opt/tomcat9
+      /app/tomcat  
+      /usr/local/tomcat 
+
+ $HOME_TOMCAT:  /opt/tomcat9    /app/tomcat  /usr/local/tomcat 
+ bin:
+    startup.sh    LINX/MacOS
+    startup.bat   ----> WINDOWS OS
+    shutdown.sh
+    shutdown.bat     ----> WINDOWS OS
+    catalina.sh start
+    catalina.sh stop | start | restart | 
+    version.sh
+    version.bat
+    sh /opt/tomcat9/bin/startup.sh
+    sudo 
+    ln -s /opt/tomcat9/bin/startup.sh /usr/bin/tomcatstarting
+------------------------------------------------------------- 
+ Accessing TOMCAT:
+Access Tomcat - using your IP address. Open port 8080
+use <ipaddress:8080> on your website browser
+
+Access the backend using App Manager
+If access is denied : 403 Access Denied
+
+Configure your context.xml; vi into this file: 
+
+ 
+  vi /opt/tomcat10/webapps/manager/META-INF/context.xml 
+  #vi /opt/tomcat10/webapps/host-manager/META-INF/context.xml  
+  
+
+Put multi-line comment like this on the context value:
+ <!--
+
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
+-->
+ 
+  Save and close
+ 
+ CREATE USER:
+  CD into conf directory or use this file to get to users.xml
+  vi /opt/tomcat10/conf/tomcat-users.xml 
+
+or vi tomcat-users.xml
+
+Enter user information like this: 
+First user:
+<user username="rondus" password="admin123" roles="manager-gui,admin-gui, manager-script"/>  
+  
+Second user:
+  <user username="rondus" password="admin123" roles="manager-gui,admin-gui"/>
+
+Save and close
+=================================================
+ To startup tomcat:
+  sh startup.sh
+  sh shutdown.sh
+  sh catalina.sh start
+  sh catalina.sh stop
+  
+ conf:
+    server.xml
+       autoDeploy
+    tomcat-user.xml  
+ lib:
+    contain all the jar files
+ 
+ logs:
+  catalina.out
+  host-manager.log
+  What are the log files available in the log dir?
+    IQ:
+    
+ webapps: where are deployments effected in Tomcat
+           default deployment Directory in Tomcat 
+    war files
+        maven-web-app.war  # mvn package 
+        maven-web-app
+        cp *.war /webapps
+    others
+    
+ work:
+    working related files
+    
+ temp:   
+ sudo sh /opt/tomcat/bin/catalina.sh status 
+
+   ps -ef | grep tomcat 
+
+   3.95.159.165:8080 
+   ssh port = 22
+   default tomcat port = 8080
+
+    localhost 
+    http://54.204.83.221:8080/manager/html
+
+   18.207.210.70:8080 
+  8080 
+
+---------------------------------------------
+Deploy your app from maven to tomcat
+===================================
+GitHub is use as a SCM platform 
+https://github.com/ItoroUkpe/maven-web-app
+ Git is use for versioning ,
+ Maven is a build tool 
+  git clone 
+1. Project:
+   boa
+   mkdir boa 
+   git clone https://github.com/RondusTech/maven-web-apps
+   cd maven-web-apps
+   mvn clean package
+
+ 
+2. deploy in tomcat = 
+   webapps
+
+ maven: privateIP= 172.31.87.205  publicIP=44.203.69.102, 
+   scp  target/*war ec2-user@172.31.89.218:/opt/tomcat9/webapps/
+
+ TOMCAT: privateIP= 172.31.89.218  publicIP=18.207.210.70
+
+ vi /opt/tomcat9/webapps/maven-web-app/jsps/home.jsp
+
+  scp maven-web-app.war ec2-user@172.31.64.214:/opt/tomcat9/webapps
+
+  scp -i class001.pem target/*war ec2-user@172.31.64.214:/opt/tomcat10/webapps
+
+3. Open tomcat port in the firewall (Security Groups)
+   8080  = 7000
+Permission denied
+
+From maven server, run this command to secure copy the *war file to tomcat webapps
+  
+scp -i class001.pem target/*war ec2-user@ipaddress:/opt/tomcat10/webapps
+
+  scp fileName.war ec2-user@172.31.87.238:/opt/tomcat9/webapps/
+  
+  sc target/
+  
+  You will encounter permission denied:
+
+Use the key-pair generated or generate a new key-pair using ssh-keygen
+
+Open your key-pair from notepad, copy the content to a folder you create. eg. class001.pem
+
+Your key is unprotected, you will need to protect the key:
+ 
+ chmod 400 class001.pem
+ 
+ Run the secure copy command like this:
+ scp -i class001.pem maven-web-app.war ec2-user@172.31.87.238:/opt/tomcat/webapps/
+ 
+ On your tomcat GUI, you should see your application deployed to tomcat
+-----------------------------------------
+  su 
+
+  cp maven-web-app.war /opt/tomcat/webapps/
+
+   h1 h2 h3 h4 h5 h6 
+
+ hotfixes 
+
+ 
+
+   172.31.87.238   
+  
+IQ: What is default port no for Tomcat and 
+    how can it be changed? 
+
+  http://3.238.177.166:7000/app/
+   
+  Tomcat uses port 8080 and 8443 for HTTP and HTTPS 
+    traffic requests respectively. 
+  
+  Tomcat default port no: 8080 
+
+  http://3.238.177.166:8080/app/services/employee/getEmployeeDetails
+ 
+  7189
+
+Port 8080 is used by:
+   Tomcat 
+   JBoss 
+   Jenkins 
+
+System Hardening  --> Highly secured 
+
+ Linux or WINDOWS  
+    ports 
+    0 - 65535 
+    0 - 1024 
+
+ Firewall 
+
+   ADDRESS BINDING 
+
+  netstat -tlpn
+  
+  vi /opt/tomcat/conf/server.xml  # change port number
+  
+  Tomcat default port no: 8080 --> 8888 -- > 800
+
+Tomcat:
+  uses: deployment server 
+        application server  
+        we deploy web applications 
+        open source 
+
+  Installation:
+     Linux 
+     Windows 
+     MacOS 
+
+  Port no:
+    80  -- http
+    443 -- https
+    8080 -- Jenkins / Tomcat  / JBoss
+    0-1024 -- Reserve ports
+    1025-65535  
+    465 --- SMTP
+    587  --- SMTP
+    22   --- ssh
+    23   -- ftp
+ 
+ scp  target/*.war  ec2-user@IP:/tmp
+ 
+ 172-31-84-245 
+
+  scp target/app.war   ec2-user@172.31.85.245:/opt/tomcat9/webapps 
+
+  scp target/*war  ec2-user@172.31.85.245:/opt/tomcat9/webapps/ 
+
+  scp -i key target/*war  ec2-user@172.31.85.245:/opt/tomcat9/webapps/ 
+
+  sudo vim /etc/ssh/sshd_config 
+  sudo systemctl restart sshd
+
+  
+  scp -i key.pem target/*.war  ec2-user@52.201.210.106:/tmp
+     
+ 
+  ssh -i 22a.pem" ec2-user@3.238.121.3  
+ 
+  vim /opt/tomcat9/conf/server.xml
+
+  
+Who's in charge of apps deployment?
+  MiddleWare Admins  :
+    out of job  
+
+How are hotfixes or hot deployments managed in tomcat? Reload
+
+server.xml
+    change port no.
+    
+    <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on" />
+     
+
+    <Host name="localhost"  appBase="ebayapps"
+ 
+    unpackWARs="true" autoDeploy="true">
+
+
+
+Tomcat:
+  uses: deployment server 
+        application server  
+        we deploy web applications 
+        open source 
+
+  Installation:
+     Linux 
+     Windows 
+     MacOS
+     Solaris  
+Tomcat home Directory = THD
+ This is where the tomcat software is extracted  
+    /opt/tomcat9
+
+    bin /  startup.sh 
+    conf / settings.xml 
+    webapps
+
+  localhost:8080 
+ vim /opt/tomcat9/webapps/manager/META-INF/context.xml 
+  
+  Port no:
+    80  -- http
+    443 -- https
+    8080 -- Jenkins / Tomcat  / JBoss
+    0-1024 -- Reserve ports
+    1025-65535  
+    465 --- SMTP
+    587  --- SMTP
+    22   --- ssh
+    23   -- ftp
+
+
+How to improve tomcat server performance?
+Multiple deployments will reduce tomcat server performance.
+
+  1GB = 1000MB 
+        64MB 
+Increase the heap Size 
+    64MB
+    256MB
+===============================================
+webServers:
+-----------
+  http 
+  yum install httpd
+  systemctl start httpd 
+  systemctl enable httpd
+
+ systemctl status httpd
+
+   54.204.83.221:80 
+
+Default home Directory:
+ cd /var/www/html
+  
+Firewall: 
+    Security Groups is firewall at the EC2 instance level
+      52.201.210.106:8080
+      
+Install apache web server 
+
+   users-->webServers/LB-->(8)appServer-->database 
+           1              2                3
+ 
+    sudo yum -y install httpd
+
+    sudo systemctl start httpd
+
+    sudo systemctl enable httpd
+    
+    port number for apache http 
+ 
+ 
+ we can deploy static content 
+
+  AHD:  
+    cd /var/www/html
+    
+    sudo vi /var/www/html/index.html
+    
+    Welcome to RondusTechology
+ 
+ <h1>This is Class24.</h1>
+ <h2>Great to have you in class001</h2>
+   <h1>The pioneer class for RondusTech</h1>
+
+    <h1>Welcome to RondusTechology</h1>
+    
+    <h2>Welcome to RondusTechology</h2>
+    
+    <h3>Welcome to RondusTechology</h3>
+    
+    <h2 align="center"> Welcome to Rondus Technology. 
+	Rondus Technology is a an ideal online training  platform for DevOps and Cloud Engineers. 
+	We offer interview preparations and job assitance.
+	This acclaimed Masterclass Program in DevOps will give you a foot into the technology world and accelerate your career. 
+	In this program, we feature the perfect mix of theory, case studies, and extensive hands-on practice to prepare you for 
+	a fast-growing field that bridges the gap between software developers and operations. This Masterclass Program is designed 
+	for learners in any discipline. It is also crafted for experienced professionals with or without programming backgrounds. 
+	We offer a blend of self-paced videos, live virtual classes, hands-on projects, and labs. We also provide access to mentorship sessions, 
+	providing a high engagement learning experience and real-world applications to help master essential DevOps skills. 
+	Learners will get hands-on experience in continuous deployment using current configuration management tools like Ansible and Terraform. 
+	the end of this course, learners will be able to write and master front-end deployment and back-end codes and manage hosts for both monitoring and scaling. 
+	This program will enable learners to demonstrate their knowledge of automating workflow and getting products to market more efficiently 
+	and effectively with tools such as Jenkins, Ansible and Terraform. 
+	Learners will also get practical experience with the development and operational activities of teams, continuous code releases, 
+	integration, and deployment processes.
+	</h2>
+    '
+
+  http://3.238.177.166/test
+  http://3.238.177.166/logo.jpg
+    DEV 
+    STAGE 
+    PROD 
+
+
+ 
+
+
+
+
+
+
