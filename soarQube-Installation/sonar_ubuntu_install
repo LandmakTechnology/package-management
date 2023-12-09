@@ -11,7 +11,8 @@ sudo apt install -y wget unzip
 sudo apt install -y openjdk-17-jdk
 
 # Set SonarQube version
-SONARQUBE_VERSION="10.3"
+SONARQUBE_VERSION="10.2.1.78527"
+
 
 # Set installation directory
 INSTALL_DIR="/opt"
