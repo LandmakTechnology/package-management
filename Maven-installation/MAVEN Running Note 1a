@@ -1,0 +1,311 @@
+Git Best Practices:
+   1. Use best branching strategy and pull requests in coding 
+   2. Commit once you finish your developing a task . 
+   3. Avoid merge Conflicts.
+        devBranch dc1--dc2--dc3
+        stageBranch sc1--sc2 && git merge devBranch
+        stageBranch git merge devBranch && sc1--sc2 
+   4. Don’t Commit Half-Done CODE - git stash
+   5. Test your code before committing.
+       echo "what is your Name"
+       read name 
+   5. Write Good Commit Messages before committing -- 
+       enhances your code quality 
+   6. Try to use git commands rather than GUI tools (github).
+       git commit -m "my First commit"
+   7. use ssh url and PAT over https and password
+   8. use rebase over git merge
+
+git :
+  Creating repositories
+  CLONING repositories --- CLI  
+     git clone repoName 
+  FORK repositories --> gui 
+     getting a copy of the codes from one git account to another  
+Maven:
+Lesson 3. Build Tools:  Maven (Jan 27)
+o	• Introduction 
+o	• Features & Benefits of Maven 
+o	• Installation (Maven Environment Setup) 
+o	• Directory Structure 
+o	• Content of pom.xml 
+o	• Maven Repositories 
+o	• Maven Life Cycles 
+o	• Executing some Examples 
+o	• Maven Multi Modules 
+	Parent pom 
+	Child pom 
+	Maven Profiles
+Build Tools:  
+===========
+  SDLC-->
+Devops Process:
+  Devops--> Coding --> Build --> Testing--> Deployed  
+            Coding --> Testing--> Build -->  Deployed 
+
+  Used to create packages for deployment  -- Tomcat
+
+  use to create deployable packages  
+     raw code + build = packages that the deployment servers can interpretes 
+
+What kind of projects are you supporting in Landmark?
+
+JAVA  = We support java based projects
+          and a few .NET projects
+        We support apps written in java,.NET, NodeJS by developers 
+  java, .NET, NodeJS is a programming language
+--------------------------------------
+JAVA:
+  ANt   ---- build.xml
+    1000Lines with ANt 
+    400LINES WITH MAVEN
+  Maven  --- pom.xml
+  Gradle  -- build.gradle
+  gitHub projectRepo_TD :
+      BuildScripts 
+      src(sourceCode) 
+      unitTestCases
+
+.Net:
+----
+  Nant
+  MSBuild
+
+JAVASCRIPT:
+-----------
+  Gulp
+  Grunt
+Python:
+-------
+  PyBuilder
+
+Ruby:
+----
+  Rake
+
+NodeJS:
+  npm
+==== 
+Maven Build Tools:
+-----------------
+https://maven.apache.org/download.cgi
+
+MAVEN = is an open source Java BASED 
+          Build  tool
+
+Any software is available is three options:
+
+Free: - software is given for free 
+         without source code
+
+Licence: The software is paid for
+
+Open source: - Implying  both the software and 
+      the source code are freely available.      
+    You can download the source code and 
+    develop on the existing features
+IQ: Explain you experience in open source technologies? 
+
+  Share 
+
+cocacola: 
+KFC :
+  Recipe (SECRET) 
+  FREE--
+
+  open source
+    NO Licence 
+    Recipe IS GIVEN FOR FREE
+Linux over windows ()
+
+Linux  : 
+  RedHat = RedHat  (IBM)   
+  CentOS = 
+  Ubuntu = ubuntu 
+  Amazon Linu = Amazon 
+===
+Build means: 
+  compiling and creating deployable packages from codes.
+  Hello.java  --> 
+  hello.py    --> 
+
+javac Hello.java  ---> 
+jvm = Java Virtual Machine 
+----
+Maven installation:
+  Maven can be installed in Any platform 
+    Linux -- 
+      RedHat / Ubuntu / CentOS
+    Windows
+      server2012/2016/2019 
+      windows XP/7/8/10 /11
+    MacOS 
+    Solaris
+
+2. Java is a pre-requisite for maven to run 
+    JRE --> JAVA RUNTIME ENVIRONMENT
+    JDK --> JAVA DEVELOPMENT KIT 1.8+
+            JVM will also be installed
+
+3. PUBLICip = 44.203.69.102
+   userName = ec2-user 
+   authentication = ssh_private_key = c27.pem 
+===============================================
+Maven Home Directory = MHD  (/opt/maven) = /app/maven)
+  This is where maven software is downloaded and extracted 
+   wget wget https://dlcdn.apache.org/maven/maven-3/3.8.3.zip 
+   uzip 
+ 
+ MHD = /opt/maven 
+ ==========
+   bin -- binary files / commands
+          mvn    
+   conf -- configuration files 
+           settings.xml
+   lib  -- jar files  
+   LICENSE  
+   NOTICE  
+   README.txt
+--
+    hello.java  
+      [Hello, Welcome to Landmark]
+
+  where Hello.java is the src code with java extension 
+        hello.py
+  where Hello.py is the src code with python extension
+
+ javac hello.java 
+
+  where javac is the command to use to compile java classes
+  This will generate byte code that jvm can understand and compile 
+   jvm = java Virtual machine 
+
+    hello.class 
+      [0101010214]  JVM 
+       hello.Class --> Byte code -- machine readable code 
+
+     [Hello, Welcome to Landmark] Human readable code 
+
+maven: creates packages (jar, war and/OR ear)
+  jar: Standalone Applications
+    ebay.jar
+    paypal.jar
+    rbc.jar 
+  war: web Applications
+    boa.war
+    rbc.war
+  ear: Enterprise Applications
+    aa.ear 
+    boa.ear
+    td.ear  
+Archieves:
+  file.zip = unzip
+  file.gz.tar
+  td.ear 
+  td.jar 
+  td.war  
+Standalone Applications – *.jar  Java Archieve
+=============================================
+ java code ONLY   
+    contains only java classes
+    jar = .classfiles
+    maven-stanalone-application.jar
+
+Web Applications  – .war  web Archieve
+======================================
+Java code + 
+web content (HTML, CSS, JS, images…,) 
+Backend code   - frontend code
+
+maven-web-application.war
+
+Enterprise applications – .ear –
+==================================
+ Enterprise Archieve
+    Multiple Modules
+      Java code + web content 
+    Ear =  war(s) + jar(s)
+    Banking applications
+    maven-web-application.war
+    maven-enterprise-application.ear
+
+Based on our project we going to create 
+   multiple either;  jar, war or ear packages:
+===========================
+What are we building?
+ we are building java codes:
+   src-- source code (raw code)
+   Unit-Test-Cases 
+      JAVA  --> JUnit test cases 
+      .Net  --> NUnit test cases 
+      C++  --> CPPUnit test cases 
+   buildScripts:  pom.xml
+     html     = hyperText mark-up language
+               comes with pre-define tags that can't be changed  
+        TAGS: h1 h2 h3 p
+              <h1>code</h1> 
+               <h1>Welcome to Landmark Technologies</h1>
+               <server>Welcome to Landmark Technologies</server> error
+         
+     pom.xml  = extensible mark-up language 
+           It doesn't come with pre-define tags that. It's dynamic 
+           <id>12457ih</id>
+           <name>Simon</name>
+            <name>Fotso</name>
+ java-code:
+  src
+    Main
+      application-code 
+    test 
+       unit test cases 
+  buildScripts
+    maven buildScripts is pom.xml 
+      xml = extenable mark-up language 
+
+git clone https://github.com/Landmark-Technologies/maven-standalone-application
+pom.xml : this among others will include
+  project dependencies 
+  pugins 
+  <dependencies>
+  <dependency>selenium</dependency>
+  <dependency>JUNit</dependency>
+  <dependency>log4j</dependency>
+  </dependencies> 
+   
+   <dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>1.2.17</version>
+</dependency>
+
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-api</artifactId>
+    <version>5.8.2</version>
+    <scope>test</scope>
+</dependency>
+
+   Testing = 
+
+   Selenium 
+   JUNit 
+   log4j
+==========
+
+yum install maven -y 
+this installs the latest version of maven found in the yum repository 
+mvn -version -- 3.6.0 
+   This lower version of maven/or any software is likely vulnerable 
+   This may not be stable version which is recomended 
+
+yum upgrade (-version -- 3.6.0) 
+   Rav4 (2004/2014/2009) 
+
+TOYOTA -- wget --- 2022/2023 
+
+wget maven-3.8.4.zip 
+
+
+
+
+
