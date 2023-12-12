@@ -54,6 +54,7 @@ sudo mv sonarqube-7.8 sonarqube
 sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.1.0.47736.zip
 sudo unzip sonarqube-9.1.0.47736.zip
 sudo rm -rf sonarqube-9.1.0.47736.zip
+```
 
 ```sh
 sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.1.0.73491.zip
