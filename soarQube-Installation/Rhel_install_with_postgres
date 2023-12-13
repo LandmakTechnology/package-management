@@ -7,7 +7,7 @@ Step 2: Install Dependency:
 $ sudo yum install wget unzip -y
 Step 3: Install Java 11 by the following command:
 
-$ sudo yum install java-11-openjdk-devel -y
+$ sudo yum install java-17-openjdk-devel
 2:Install and Setup PostgreSQL 14 Database For SonarQube
 Step 1: Install the PostgreSQL Repository
 
