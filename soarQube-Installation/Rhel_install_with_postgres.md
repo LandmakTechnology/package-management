@@ -72,9 +72,11 @@ sudo useradd sonar
 sudo passwd sonar
 ```
 ### 3:Download and Install SonarQube on Linux
-### Step 1: Download the sonaqube binary files To download the latest version go to the SonarQube download page.
+### Step 1: Download the sonaqube binary files To download the latest version go to the SonarQube download page
 ---sh
 cd /opt
+```
+```sh
 sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.3.79811.zip
 ```
 ### Step 2:Unzip the archive file by the following command:
