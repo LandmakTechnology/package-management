@@ -100,7 +100,7 @@ sudo chown -R sonar:sonar /opt/sonarqube
 ```
 ### Step 4: Open the SonarQube configuration file in the vim editor.
 ```sh
-$ sudo vi /opt/sonarqube/conf/sonar.properties
+sudo vi /opt/sonarqube/conf/sonar.properties
 ```
 ### Step 5: Find the following lines uncomment and type the PostgreSQL Database username and password which we have created in the above steps.
 ```sh
