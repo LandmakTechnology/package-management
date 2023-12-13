@@ -43,12 +43,7 @@ sudo yum -y install unzip wget git
 sudo yum install java-17-openjdk-devel
 ```
 ### 4. Download and extract the SonarqQube Server software.
-```sh
-sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.8.zip
-sudo unzip sonarqube-7.8.zip
-sudo rm -rf sonarqube-7.8.zip
-sudo mv sonarqube-7.8 sonarqube
-```
+
 ### Alternate version
 ```sh
 sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.1.0.47736.zip
@@ -76,9 +71,9 @@ sudo sh /opt/sonarqube/bin/linux-x86-64/sonar.sh status
 ```
 
 ### 7. Ensure that SonarQube is running and Access sonarQube on the browser
-# sonarqube default port is = 9000
-# get the sonarqube public ip address 
-# publicIP:9000
+### sonarqube default port is = 9000
+### get the sonarqube public ip address 
+### publicIP:9000
 ```sh
 curl -v localhost:9000
 54.236.232.85:9000
