@@ -10,7 +10,8 @@ sudo yum install -y wget unzip
 sudo yum install -y java-17-openjdk-devel
 
 # Set SonarQube version
-SONARQUBE_VERSION="10.2.1.78527"
+SONARQUBE_VERSION="9.9.3.79811" 
+# "10.2.1.78527"
 
 # Set installation directory
 INSTALL_DIR="/opt"
