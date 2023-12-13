@@ -60,15 +60,19 @@ Step 2: Set password for the user:
 $ sudo passwd sonar
 3:Download and Install SonarQube on Linux
 Step 1: Download the sonaqube binary files To download the latest version go to the SonarQube download page.
+---
+
+
 
 $ cd /opt
-$ sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.1.0.47736.zip
+$ sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.3.79811.zip
 Step 2:Unzip the archive file by the following command:
 
-$ sudo unzip sonarqube-9.1.0.47736.zip
+$ sudo unzip sonarqube-9.9.3.79811.zip
+$ sudo rm -rf sonarqube-9.9.3.79811.zip
 Step 3: Change the sonarqube extracted directory name to sonarqube.
 
-$ sudo mv sonarqube-9.1.0.47736 sonarqube
+$ sudo mv sonarqube-9.9.3.79811 sonarqube
 4:Configure SonarQube
 Step 1: Create a group name sonar
 
