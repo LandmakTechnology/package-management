@@ -1,6 +1,7 @@
 #!/bin/bash
 sudo timedatectl set-timezone America/New_York
 sudo hostnamectl set-hostname jenkins
+cd /opt
 sudo yum install wget tree vim git nano unzip -y
 sudo wget -O /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo
