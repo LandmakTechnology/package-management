@@ -38,9 +38,9 @@ cd /opt
 sudo yum install wget git nano unzip -y
 sudo yum install java-11-openjdk-devel java-1.8.0-openjdk-devel -y
 ```
-## New
+## New (don't use this)
 ```sh
-sudo yum install java-1.8.0-openjdk.x86_64 -y
+# sudo yum install java-1.8.0-openjdk.x86_64 -y
 ```
 ### Download nexus software and extract it (unzip).
 ```sh
@@ -49,13 +49,8 @@ sudo tar -zxvf nexus-3.58.1-02-unix.tar.gz
 sudo mv /opt/nexus-3.58.1-02 /opt/nexus
 sudo rm -rf nexus-3.58.1-02-unix.tar.gz
 ```
-```sh
-sudo wget http://download.sonatype.com/nexus/3/nexus-3.15.2-01-unix.tar.gz 
-sudo tar -zxvf nexus-3.15.2-01-unix.tar.gz
-sudo mv /opt/nexus-3.15.2-01 /opt/nexus
-sudo rm -rf nexus-3.15.2-01-unix.tar.gz
-```
-## New
+
+## New (don't use this - just for learning purpose)
 ```sh
 sudo wget -O nexus.tar.gz https://download.sonatype.com/nexus/3/latest-unix.tar.gz
 sudo tar -xvf nexus.tar.gz
