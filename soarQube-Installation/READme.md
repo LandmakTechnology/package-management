@@ -66,6 +66,7 @@ sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.2
 sudo unzip sonarqube-10.2.1.78527.zip
 sudo rm -rf sonarqube-10.2.1.78527.zip
 ```
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.3.0.82913.zip
 
 ## 5. Grant file permissions for sonar user to start and manage sonarQube
 ```sh
