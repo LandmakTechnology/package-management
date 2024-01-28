@@ -50,6 +50,7 @@ sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.1.
 sudo unzip sonarqube-9.1.0.47736.zip
 sudo rm -rf sonarqube-9.1.0.47736.zip
 ```
+I recommend Installing the Community Edition
 ```sh
 sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.3.79811.zip
 sudo unzip sonarqube-9.9.3.79811.zip
@@ -72,7 +73,7 @@ sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.3
 
 ## 5. Grant file permissions for sonar user to start and manage sonarQube
 ```sh
-sudo mv sonarqube-10.2.1.78527 /opt/sonarqube
+sudo mv sonarqube-9.1.0.47736 /opt/sonarqube
 sudo chown -R sonar:sonar /opt/sonarqube/
 sudo chmod -R 775 /opt/sonarqube/
 ```
