@@ -50,7 +50,7 @@ sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.1.
 sudo unzip sonarqube-9.1.0.47736.zip
 sudo rm -rf sonarqube-9.1.0.47736.zip
 ```
-I recommend Installing the Community Edition
+### I recommend Installing the Community Edition
 ```sh
 sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.3.79811.zip
 sudo unzip sonarqube-9.9.3.79811.zip
