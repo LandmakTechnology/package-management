@@ -42,9 +42,9 @@ Create the docker group.
 ```docker
 $ sudo groupadd docker
 ```
-Add your user to the docker group.
+Add your user to the docker group. #USER = ubuntu or ec2-user if you are using ubuntu or ec2-user as a user
 ```docker
-$ sudo usermod -aG docker $USER
+$ sudo usermod -aG docker #USER    //change #USER to the user, ubuntu or ec2-user
 ```
 Log out and log back in so that your group membership is re-evaluated.
 
