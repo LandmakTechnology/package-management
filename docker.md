@@ -28,11 +28,11 @@ Install the Docker packages.
 Latest Specific version
 To install the latest version, run:
 ```docker
-$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 Verify that the Docker Engine installation is successful by running the hello-world image.
 ```docker
-$ sudo docker run hello-world
+sudo docker run hello-world
 ```
 This command downloads a test image and runs it in a container. When the container runs, it prints a confirmation message and exits.
 
@@ -40,11 +40,11 @@ To create the docker group and add your user:
 
 Create the docker group.
 ```docker
-$ sudo groupadd docker
+sudo groupadd docker
 ```
 Add your user to the docker group. #USER = ubuntu or ec2-user if you are using ubuntu or ec2-user as a user
 ```docker
-$ sudo usermod -aG docker #USER    //change #USER to the user, ubuntu or ec2-user
+sudo usermod -aG docker #USER    //change #USER to the user, ubuntu or ec2-user
 ```
 Log out and log back in so that your group membership is re-evaluated.
 
@@ -52,9 +52,9 @@ If you're running Linux in a virtual machine, it may be necessary to restart the
 
 You can also run the following command to activate the changes to groups:
 ```docker
-$ newgrp docker
+newgrp docker
 ```
 Verify that you can run docker commands without sudo.
 ```docker
-$ docker run hello-world
+docker run hello-world
 ```
