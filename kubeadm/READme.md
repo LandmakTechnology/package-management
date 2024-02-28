@@ -3,7 +3,6 @@
 ### **Email: mylandmarktech@gmail.com**
 
 
-
 ## Kubernetes Setup Using Kubeadm In AWS EC2 Ubuntu Servers.
 ##### Prerequisite
 + AWS Acccount.
