@@ -129,7 +129,7 @@ sudo -i
 On both the master and worker nodes, ensure your system packages are up-to-date:
 
 ```bash
-sudo apt update
+sudo apt update -y
 sudo apt upgrade -y
 ```
 
