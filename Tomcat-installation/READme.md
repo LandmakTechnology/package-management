@@ -24,7 +24,7 @@ sudo yum install java-1.8.0-openjdk-devel -y
 # install wget unzip packages.
 sudo yum install wget unzip -y
 ```
-## Install Tomcat version 9.0.83
+## Install Tomcat version 9.0.89
 ### Download and extract the tomcat server
 ``` sh
 sudo wget https://github.com/LandmakTechnology/package-management/tree/master/Tomcat-installation
