@@ -73,7 +73,7 @@ sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.3
 
 ## 5. Grant file permissions for sonar user to start and manage sonarQube
 ```sh
-sudo mv sonarqube-9.1.0.47736 /opt/sonarqube
+sudo mv sonarqube-9.9.3.79811 /opt/sonarqube
 sudo chown -R sonar:sonar /opt/sonarqube/
 sudo chmod -R 775 /opt/sonarqube/
 ```
