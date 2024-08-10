@@ -44,7 +44,7 @@ sudo yum install java-17-openjdk-devel
 ```
 ### 4. Download and extract the SonarqQube Server software.
 
-### Alternate version
+### Alternate version - this version works - August 9, 2024
 ```sh
 sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.1.0.47736.zip
 sudo unzip sonarqube-9.1.0.47736.zip
@@ -78,9 +78,10 @@ sudo chown -R sonar:sonar /opt/sonarqube/
 sudo chmod -R 775 /opt/sonarqube/
 ```
 ### 6. start sonarQube server
+### Note: Don't start sonarqube with sudo
 ```sh
-sudo sh /opt/sonarqube/bin/linux-x86-64/sonar.sh start 
-sudo sh /opt/sonarqube/bin/linux-x86-64/sonar.sh status
+sh /opt/sonarqube/bin/linux-x86-64/sonar.sh start 
+sh /opt/sonarqube/bin/linux-x86-64/sonar.sh status
 ```
 
 ### 7. Ensure that SonarQube is running and Access sonarQube on the browser
