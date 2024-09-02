@@ -69,14 +69,14 @@ Log Files:
 Jenkins logs are often stored in /var/log/jenkins/jenkins.log.
 You can also check where Jenkins is installed by using the following command:
 
-```bash
+```
 ps aux | grep jenkins
-```bash
+```
 This command will show you the Jenkins process and the paths being used. Additionally, you can use the command:
 
-```bash
+```
 sudo systemctl status jenkins
-```bash
+```
 This will display the status of the Jenkins service, including its home directory and other relevant paths.
 
 These are typical locations, but the exact paths may vary depending on how Jenkins was installed (using package managers like apt or yum, or manually).
