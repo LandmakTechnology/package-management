@@ -1,4 +1,14 @@
-Deploy Kubernetes
+
+## Prepare Virtual Machines
+   - Set up at least two VMs (one for the Kubernetes Master Node and others as Worker Nodes) with **Ubuntu 24.04**. Each VM should have at least:
+     - **2 CPUs**
+     - **2 GB RAM** (Master: 4GB recommended)
+     - **10 GB of storage**
+   - Update packages:
+     ```bash
+     sudo apt update && sudo apt upgrade -y
+     ```
+## Deploy Kubernetes
 With the necessary tools installed, proceed to deploy the cluster. Follow the steps below to make the necessary system adjustments, initialize the cluster, and join worker nodes.
 
 ## Step 1: Prepare for Kubernetes Deployment
