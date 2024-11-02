@@ -1,12 +1,14 @@
 Deploy Kubernetes
 With the necessary tools installed, proceed to deploy the cluster. Follow the steps below to make the necessary system adjustments, initialize the cluster, and join worker nodes.
 
-Step 1: Prepare for Kubernetes Deployment
+## Step 1: Prepare for Kubernetes Deployment
 This section shows you how to prepare the servers for a Kubernetes deployment. Execute the steps below on each server node:
 
 1. Disable all swap spaces with the swapoff command:
+```sh
 
 sudo swapoff -a
+```sh
 
 Then use the sed command below to make the necessary adjustments to the /etc/fstab file:
 
