@@ -49,7 +49,7 @@ Save the file and exit.
 sudo sysctl --system
 ```
 Reloading system configuration.
-Step 2: Assign Unique Hostname for Each Server Node
+## Step 2: Assign Unique Hostname for Each Server Node
 1. Decide which server will be the master node. Then, enter the command on that node to name it accordingly:
 ```
 sudo hostnamectl set-hostname master-node
@@ -65,7 +65,7 @@ If you have additional worker nodes, use this process to set a unique hostname o
 Editing the hosts file.
 4. Restart the terminal application to apply the hostname change.
 
-Step 3: Initialize Kubernetes on Master Node
+## Step 3: Initialize Kubernetes on Master Node
 Once you finish setting up hostnames on cluster nodes, switch to the master node and follow the steps to initialize Kubernetes on it:
 
 1. Open the kubelet file in a text editor.
@@ -139,7 +139,7 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 ```
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
-Step 4: Deploy Pod Network to Cluster
+## Step 4: Deploy Pod Network to Cluster
 A pod network is a way to allow communication between different nodes in the cluster. This tutorial uses the Flannel node network manager to create a pod network.
 
 Apply the Flannel manager to the master node by executing the steps below:
@@ -152,7 +152,7 @@ kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/
 ```
 kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 ```
-Step 5: Join Worker Node to Cluster
+## Step 5: Join Worker Node to Cluster
 Repeat the following steps on each worker node to create a cluster:
 
 1. Stop and disable AppArmor:
@@ -177,6 +177,6 @@ kubectl get nodes
 Viewing deployed nodes.
 The system displays the master node and the worker nodes in the cluster.
 
-Conclusion
+## Conclusion
 
 After following the steps presented in this article, you should have Kubernetes installed on Ubuntu. The article included instructions on installing the necessary packages and deploying Kubernetes on all your nodes.
