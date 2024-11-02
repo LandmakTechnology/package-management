@@ -190,3 +190,22 @@ The system displays the master node and the worker nodes in the cluster.
 ## Conclusion
 
 After following the steps presented in this article, you should have Kubernetes installed on Ubuntu. The article included instructions on installing the necessary packages and deploying Kubernetes on all your nodes.
+---------------------------------------------
+## Fixing installation issue with repository
+Definitely the reason is the repository reference, try to removing (if it exists) the /etc/apt/sources.list.d/kubernetes.list file (with sudo permissions), the kubernetes repository reference (if it exist) in the /etc/apt/sources.list.d/sources.list file (with sudo permissions, with some text editor like vim), finally, (if it exists) any if there is any kubernetes reference file in the /etc/apt/trusted.gpg.d directory.
+
+Add the correct repositories:
+```
+echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+```
+Install kubectl, kubeadmin and kublet:
+```
+sudo apt update
+
+sudo apt install -y kubelet kubeadm kubectl
+```
+i hope this help you. Happy orquestation <3
+
+References: https://kubernetes.io/blog/2023/08/15/pkgs-k8s-io-introduction/
