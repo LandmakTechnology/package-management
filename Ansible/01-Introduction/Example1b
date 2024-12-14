@@ -24,5 +24,5 @@ resource "aws_instance" "app_server" {
     Name = "AppServer-${count.index + 1}"  # Generates instance names like "AppServer-1", "AppServer-2", etc.
   }
 
-  key_name = "classkey"  # Add the key pair "classkey" to each instance
+  key_name = "sonar"  # Add the key pair "sonar" to each instance
 }
