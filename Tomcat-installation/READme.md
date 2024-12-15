@@ -27,12 +27,12 @@ sudo yum install wget unzip -y
 ## Install Tomcat version 9.0.97
 ### Download and extract the tomcat server
 ``` sh
-sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.97/bin/apache-tomcat-9.0.97.zip
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.98/bin/apache-tomcat-9.0.98.zip
 
-sudo unzip apache-tomcat-9.0.97.zip
-sudo rm -rf apache-tomcat-9.0.97.zip
+sudo unzip apache-tomcat-9.0.98.zip
+sudo rm -rf apache-tomcat-9.0.98.zip
 ### rename tomcat for good naming convention
-sudo mv apache-tomcat-9.0.97 tomcat9 
+sudo mv apache-tomcat-9.0.98 tomcat9 
 ### assign executable permissions to the tomcat home directory
 sudo chmod 777 -R /opt/tomcat9
 sudo chown ec2-user -R /opt/tomcat9
