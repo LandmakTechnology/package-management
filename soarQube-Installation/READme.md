@@ -39,14 +39,20 @@ sudo service sshd restart
 ``` sh
 cd /opt
 sudo yum -y install unzip wget git
-sudo yum install  java-11-openjdk-devel
+sudo yum remove java* -y
+sudo yum install fontconfig java-17-openjdk -y
+2. install sonarqube 9.9 
+   https://www.sonarsource.com/products/sonarqube/downloads/
+   https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.0.59551.zip
+
+
 ```
 ### 4. Download and extract the SonarqQube Server software.
 ```sh
-sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.8.zip
-sudo unzip sonarqube-7.8.zip
-sudo rm -rf sonarqube-7.8.zip
-sudo mv sonarqube-7.8 sonarqube
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.0.59551.zip
+sudo unzip sonarqube-9.9.0.59551.zip
+sudo mv sonarqube-9.9.0.59551.zip sonarqube
+sudo rm -rf *zip
 ```
 
 ## 5. Grant file permissions for sonar user to start and manage sonarQube

@@ -27,6 +27,7 @@ sudo -i
 #i1) Switch to root user [ sudo -i]
 
 sudo hostnamectl set-hostname  node1
+sudo -i
 
 #2) Disable swap & add kernel settings
 
@@ -100,16 +101,16 @@ apt-get install -y apt-transport-https ca-certificates curl
 
 # Download the Google Cloud public signing key:
 
-curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
 # Add the Kubernetes apt repository:
 
-echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 # Update apt package index, install kubelet, kubeadm and kubectl, and pin their version:
 
 apt-get update
-apt-get install -y kubelet kubeadm kubectl
+sudo apt install -y kubeadm=1.28.1-1.1 kubelet=1.28.1-1.1 kubectl=1.28.1-1.1
 
 # apt-mark hold will prevent the package from being automatically upgraded or removed.
 
@@ -120,47 +121,5 @@ apt-mark hold kubelet kubeadm kubectl
 systemctl daemon-reload
 systemctl start kubelet
 systemctl enable kubelet.service
-```
-## Initialised the control plane in the master node as the root user.
-``` sh
-# Initialize Kubernetes control plane by running the below commond as root user.
-sudo kubeadm init
-```
-
-## exit as root user 
-```sh
-sudo su - ubuntu
-```
-
-## execute the below commands as a normal ubuntu user
-```sh 
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
-```
-## To verify, if kubectl is working or not, run the following command.
-kubectl get pods -A
-```sh
-#deploy the network plugin - weave network and verify
-kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
-kubectl get pods -A
-kubectl get node
-```
-## Copy kubeadm join token from the master and execute in Worker Nodes to join to cluster
-```sh
-kubeadm join 172.31.10.12:6443 --token cdm6fo.dhbrxyleqe5suy6e \
-        --discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
-```
-
-##  Generate the master join token on the master node
-```sh
-kubeadm token create --print-join-command
-``` 
-##  Copy the token and run it on worker nodes to add them to the control plane
-# Replace the token below with yours. This step is important when you restart your nodes
-```sh
-kubeadm join 172.31.10.12:6443 --token cdm6fo.dhbrxyleqe5suy6e \
-        --discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
-```
 
 

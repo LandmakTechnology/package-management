@@ -13,10 +13,10 @@
 + Attach Security Group to EC2 Instance.
 + Install java openJDK 1.8+
 
-### Install Java JDK 1.8+  and other softares (GIT, wget and tree)
+### Install Java JDK 11+  and other softares (GIT, wget and tree)
 
 ``` sh
-# install Java JDK 1.8+ as a pre-requisit for maven to run.
+# install Java JDK 11+ as a pre-requisit for maven to run.
 
 sudo hostnamectl set-hostname maven
 sudo su - ec2-user
@@ -30,10 +30,10 @@ git --version
 ## 2. Download, extract and Install Maven
 ``` sh
 #Step1) Download the Maven Software
-sudo wget https://dlcdn.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.zip
-sudo unzip apache-maven-3.9.0-bin.zip
-sudo rm -rf apache-maven-3.9.0-bin.zip
-sudo mv apache-maven-3.9.0/ maven
+sudo wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.zip
+sudo unzip apache-maven-3.9.6-bin.zip
+sudo rm -rf apache-maven-3.9.6-bin.zip
+sudo mv apache-maven-3.9.6/ maven
 ```
 ## .#Step3) Set Environmental Variable  - For Specific User eg ec2-user
 ``` sh

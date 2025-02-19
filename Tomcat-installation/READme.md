@@ -2,8 +2,6 @@
 ### **<span style="color:green">Contacts: +1437 215 2483<br> WebSite : <http://mylandmarktech.com/></span>**
 ### **Email: mylandmarktech@gmail.com**
 
-
-
 ## Apache Tomcat Installation And Setup In AWS EC2 Redhat Instance.
 ##### Prerequisite
 + AWS Acccount.
@@ -16,22 +14,25 @@
 ### Install Java JDK 1.8+ 
 
 ``` sh
-# install Java JDK 1.8+ as a pre-requisit for tomcat to run.
+# change hostname to tomcat
 sudo hostnamectl set-hostname tomcat
+sudo su - ec2-user
 cd /opt 
+# install Java JDK 1.8+ as a pre-requisit for tomcat to run.
 sudo yum install git wget -y
 sudo yum install java-1.8.0-openjdk-devel -y
 # install wget unzip packages.
 sudo yum install wget unzip -y
 ```
-## Install Tomcat version 9.0.73
+## Install Tomcat version 9.0.97
 ### Download and extract the tomcat server
 ``` sh
-sudo wget  https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.73/bin/apache-tomcat-9.0.73.zip 
-sudo unzip apache-tomcat-9.0.73.zip
-sudo rm -rf apache-tomcat-9.0.73.zip
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.98/bin/apache-tomcat-9.0.98.zip
+
+sudo unzip apache-tomcat-9.0.98.zip
+sudo rm -rf apache-tomcat-9.0.98.zip
 ### rename tomcat for good naming convention
-sudo mv apache-tomcat-9.0.73 tomcat9
+sudo mv apache-tomcat-9.0.98 tomcat9 
 ### assign executable permissions to the tomcat home directory
 sudo chmod 777 -R /opt/tomcat9
 sudo chown ec2-user -R /opt/tomcat9
