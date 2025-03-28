@@ -43,10 +43,7 @@ cd /opt
 sudo yum install wget git nano unzip -y
 sudo yum install java-11-openjdk-devel 
 ```
-#Alternatively - This is for java 17
-```sh
-sudo yum install java-17-openjdk-devel -y
-```
+
 ### Download nexus software and extract it (unzip).
 ```sh
 sudo wget https://download.sonatype.com/nexus/3/nexus-unix-x86-64-3.78.2-04.tar.gz
