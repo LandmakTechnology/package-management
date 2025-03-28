@@ -19,7 +19,7 @@
 + All Nexus processes should run as a non-root nexus user.
 
 ## Create nexus user to manage the Nexus server
-```sh
+
 #As a good security practice, Nexus is not advised to run nexus service as a root user, 
 # so create a new user called nexus and grant sudo access to manage nexus services as follows.
 ```sh
