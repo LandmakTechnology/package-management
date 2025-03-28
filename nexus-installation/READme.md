@@ -70,15 +70,58 @@ sudo chmod -R 775 /opt/sonatype-work
 echo  'run_as_user="nexus" ' > /opt/nexus/bin/nexus.rc
 ```
 
-##  CONFIGURE NEXUS TO RUN AS A SERVICE 
-```sh
-sudo ln -s /opt/nexus/bin/nexus /etc/init.d/nexus
+## 🔧 Step-by-Step: Run Nexus as a Systemd Service
+
+### ✅ 1. Create a Nexus service file:
+
+```bash
+sudo nano /etc/systemd/system/nexus.service
 ```
 
-## Enable and start the nexus services
-```sh
+Paste the following (edit paths if your Nexus is installed elsewhere):
+
+```ini
+[Unit]
+Description=nexus service
+After=network.target
+
+[Service]
+Type=forking
+LimitNOFILE=65536
+ExecStart=/opt/nexus/bin/nexus start
+ExecStop=/opt/nexus/bin/nexus stop
+User=nexus
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+```
+
+> Replace `User=nexus` with the user who owns the Nexus process, or create one using:
+> ```bash
+> sudo adduser nexus
+> sudo chown -R nexus:nexus /opt/nexus
+> ```
+
+---
+
+### ✅ 2. Reload systemd and enable service:
+
+```bash
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
 sudo systemctl enable nexus
+```
+
+---
+
+### ✅ 3. Start and check Nexus status:
+
+```bash
 sudo systemctl start nexus
 sudo systemctl status nexus
-echo "end of nexus installation"
 ```
+
+---
+
+
