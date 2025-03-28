@@ -50,15 +50,9 @@ sudo yum install java-17-openjdk-devel -y
 ### Download nexus software and extract it (unzip).
 ```sh
 sudo wget https://download.sonatype.com/nexus/3/nexus-unix-x86-64-3.78.2-04.tar.gz
-sudo tar -zxvf nexus-3.78.2-04-unix.tar.gz
+sudo tar -zxvf nexus-unix-x86-64-3.78.2-04.tar.gz
 sudo mv /opt/nexus-3.78.2-04 /opt/nexus
-sudo rm -rf nexus-3.78.2-04-unix.tar.gz
-```
-
-## New (don't use this - just for learning purpose)
-```sh
-sudo wget -O nexus.tar.gz https://download.sonatype.com/nexus/3/latest-unix.tar.gz
-sudo tar -xvf nexus.tar.gz
+sudo rm -rf nexus-unix-x86-64-3.78.2-04.tar.gz
 ```
 
 ## Grant permissions for nexus user to start and manage nexus service
