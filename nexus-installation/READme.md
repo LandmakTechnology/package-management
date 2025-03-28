@@ -21,7 +21,7 @@
 ## Create nexus user to manage the Nexus server
 
 #As a good security practice, Nexus is not advised to run nexus service as a root user, 
-# so create a new user called nexus and grant sudo access to manage nexus services as follows.
+#so create a new user called nexus and grant sudo access to manage nexus services as follows.
 ```sh
 sudo yum update && sudo yum upgrade
 sudo hostnamectl set-hostname nexus
@@ -43,7 +43,7 @@ cd /opt
 sudo yum install wget git nano unzip -y
 sudo yum install java-11-openjdk-devel 
 ```
-# Alternatively - This is for java 17
+#Alternatively - This is for java 17
 ```sh
 sudo yum install java-17-openjdk-devel -y
 ```
