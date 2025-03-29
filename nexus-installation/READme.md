@@ -16,6 +16,7 @@
 + Minimum 4 VCPU & 8 GB Memory
 + Server firewall opened for port 22 & 8081 
 + OpenJDK 8
++ Java 11
 + All Nexus processes should run as a non-root nexus user.
 
 ## Create nexus user to manage the Nexus server
