@@ -13,7 +13,7 @@
 + Attach Security Group to EC2 Instance.
 + Install java openJDK 1.8+ for Nexus version 3.15
 ## New Prerequisite
-+ Minimum 1 VCPU & 2 GB Memory
++ Minimum 4 VCPU & 8 GB Memory
 + Server firewall opened for port 22 & 8081 
 + OpenJDK 8
 + All Nexus processes should run as a non-root nexus user.
