@@ -48,12 +48,14 @@ sudo apt update
 sudo apt install maven -y
 mvn --version
 ```
----mavenhome
+---
+
 ### Maven Home
+```mavenhome
 $MAVEN_HOME/conf/settings.xml
 /opt//usr/share/maven/conf/settings.xml
 mvn -X | grep "Maven home"
-
+```
 ---
 
 Installation And Setup In AWS EC2 Redhat Instance.
