@@ -49,6 +49,9 @@ sudo yum install java-17-openjdk-devel
 sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.1.0.47736.zip
 sudo unzip sonarqube-9.1.0.47736.zip
 sudo rm -rf sonarqube-9.1.0.47736.zip
+// sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.3.0.104237.zip
+// sudo unzip sonarqube-25.3.0.104237.zip
+// sudo rm -rf sonarqube-25.3.0.104237.zip
 ```
 ###  Version - this version works - August 10, 2024 in class
 ```sh
