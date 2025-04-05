@@ -36,7 +36,7 @@ sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication
 sudo service sshd restart
 ```
 ### 3. Install Java JDK 1.8+ required for sonarqube to start
-
+Note: Your java version has to be the same with your Maven java version.
 ``` sh
 cd /opt
 sudo yum -y install unzip wget git
