@@ -53,9 +53,10 @@ sudo chmod -R 775 /opt/sonatype-work
 ```sh
 echo  'run_as_user="nexus" ' > /opt/nexus/bin/nexus.rc
 ```
-
 ##  CONFIGURE NEXUS TO RUN AS A SERVICE 
 ```sh
+sh /opt/nexus/bin/nexus start
+sh /opt/nexus/bin/nexus status
 sudo ln -s /opt/nexus/bin/nexus /etc/init.d/nexus
 
 #9 Enable and start the nexus services
