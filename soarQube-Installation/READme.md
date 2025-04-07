@@ -24,6 +24,8 @@ sudo echo "sonar ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/sonar
 # set hostname for the sonarqube server
 sudo hostnamectl set-hostname sonar 
 sudo su - sonar
+# change  the timezone sonarqube server
+sudo timedatectl set-timezone America/New_York
 ```
 ## 1b. Assign password to sonar user
 ```sh
