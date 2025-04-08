@@ -27,15 +27,6 @@ sudo su - sonar
 # change  the timezone sonarqube server
 sudo timedatectl set-timezone America/New_York
 ```
-## 1b. Assign password to sonar user
-```sh
-sudo passwd sonar
-```
-## 2. Enable PasswordAuthentication in the server
-```sh
-sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
-sudo service sshd restart
-```
 ### 3. Install Java JDK 1.8+ required for sonarqube to start
 
 ``` sh
