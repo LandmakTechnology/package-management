@@ -72,7 +72,7 @@ sudo chmod -R u+x /opt/tomcat/bin
 To manage Tomcat easily, create a Systemd service file:
 
 ```bash
-sudo nano /etc/systemd/system/tomcat.service
+sudo vi /etc/systemd/system/tomcat.service
 ```
 
 Paste the following content:
@@ -159,7 +159,7 @@ Tomcat comes with a web-based manager app (`Manager App`). Enable secure access 
 **Edit `tomcat-users.xml`:**
 
 ```bash
-sudo nano /opt/tomcat/conf/tomcat-users.xml
+sudo vi /opt/tomcat/conf/tomcat-users.xml
 ```
 
 Add users with appropriate roles:
@@ -187,7 +187,39 @@ With:
 ```
 
 ---
+When configuring the Tomcat manager to restrict access by IP, the setting uses a regular expression to represent allowed IP addresses. 
 
+For instance, if your public IP is:
+
+```
+44.247.47.124
+```
+
+You should represent it in the `context.xml` file like this:
+
+**Example configuration:**
+
+```xml
+<Context antiResourceLocking="false" privileged="true">
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve" allow="127\.0\.0\.1|44\.247\.47\.124" />
+</Context>
+```
+
+**Explanation:**
+
+- Use `\.` (backslash-dot) to represent literal dots (`.`) since a single dot has special meaning in regular expressions.
+- The pipe symbol (`|`) separates multiple allowed IP addresses (here it allows local access from `127.0.0.1` and your IP address).
+
+If you later need to allow an IP range, you would use a pattern like:
+
+```xml
+allow="127\.0\.0\.1|44\.247\.47\.\d{1,3}"
+```
+
+This would allow any IP from `44.247.47.0` to `44.247.47.255`.
+
+
+---
 ### ✅ **2. Increase Security (Remove Default Applications)**
 
 Remove default applications you do not use (examples, documentation, etc.):
