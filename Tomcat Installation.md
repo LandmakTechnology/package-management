@@ -47,7 +47,7 @@ sudo useradd -m -U -d /opt/tomcat -s /bin/false tomcat
 
 ---
 
-### 🔍 Step-by-Step Explanation:
+ 🔍 Step-by-Step Explanation:
 
 - **`sudo`**  
   Runs the command as the root user, required to create system users.
@@ -101,7 +101,6 @@ uid=1001(tomcat) gid=1001(tomcat) groups=1001(tomcat)
 ```
 
 
-```
 
 ### Step 4: Download and Extract Tomcat
 
