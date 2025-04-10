@@ -38,6 +38,85 @@ sudo useradd -m -U -d /opt/tomcat -s /bin/false tomcat
 ```
 
 ---
+```Explanation
+Here's a detailed breakdown of the command:
+
+```bash
+sudo useradd -m -U -d /opt/tomcat -s /bin/false tomcat
+```
+
+---
+
+### 🔍 Step-by-Step Explanation:
+
+- **`sudo`**  
+  Runs the command as the root user, required to create system users.
+
+- **`useradd`**  
+  A Linux command used to create a new user account on the system.
+
+- **`-m` (Create Home Directory)**  
+  Automatically creates a home directory for the user if it doesn't exist.  
+  By default, it would be `/home/username`, but we specify a custom location below.
+
+- **`-U` (Create User Group)**  
+  Automatically creates a new group with the same name as the username (`tomcat`), and assigns this user to that group.  
+  This helps manage file permissions neatly.
+
+- **`-d /opt/tomcat` (Home Directory)**  
+  Specifies a custom home directory for the user. In this case, Tomcat-related files will live in `/opt/tomcat`.
+
+- **`-s /bin/false` (Disable Login Shell)**  
+  Sets the user's shell to `/bin/false`. This prevents login and direct shell access for security reasons.  
+  A user with `/bin/false` cannot log in via SSH or the console.  
+  It's a common security measure to restrict access for service accounts.
+
+- **`tomcat` (Username)**  
+  The name of the new user being created.  
+  It's typical to create a dedicated user for running services like Tomcat, enhancing security and simplifying management.
+
+---
+
+### 📌 **Summary of the Command's Purpose:**
+
+This command creates a dedicated system-level user called **`tomcat`**, sets its home directory as `/opt/tomcat`, assigns a dedicated group also named **`tomcat`**, and disables shell access for improved security.
+
+- **Security Best Practice:**  
+  Running Tomcat (and other similar services) as a dedicated user account helps prevent unauthorized access and limits the potential impact of vulnerabilities.
+
+---
+
+### ✅ **Verify User Creation:**
+
+After running the command, you can verify the creation by:
+
+```bash
+id tomcat
+```
+
+This will output the user's information, confirming creation and assigned groups:
+
+```bash
+uid=1001(tomcat) gid=1001(tomcat) groups=1001(tomcat)
+```
+
+You can also verify the directory permissions:
+
+```bash
+ls -ld /opt/tomcat
+```
+
+Output example:
+```
+drwxr-xr-x 2 tomcat tomcat 4096 Apr  8 10:30 /opt/tomcat
+```
+
+This confirms the directory was created and ownership assigned properly.
+
+---
+
+**That's how the command works!**
+```
 
 ### Step 4: Download and Extract Tomcat
 
@@ -283,7 +362,7 @@ Example configuration (self-signed certificate):
 Adjust JVM memory for optimal performance by editing the file:
 
 ```bash
-sudo nano /opt/tomcat/bin/setenv.sh
+sudo vim /opt/tomcat/bin/setenv.sh
 ```
 
 Insert this content (adjust sizes according to your server RAM):
@@ -304,7 +383,7 @@ sudo chmod +x /opt/tomcat/bin/setenv.sh
 Configure logs effectively by editing:
 
 ```bash
-sudo nano /opt/tomcat/conf/logging.properties
+sudo vim /opt/tomcat/conf/logging.properties
 ```
 
 Set logging levels, log rotation, and formats as needed.
@@ -410,3 +489,143 @@ sudo chmod -R o-rwx /opt/tomcat/conf
 ---
 
 After completing these configurations, your Apache Tomcat installation will be secure, performant, and production-ready.
+---
+Here's a clear, **step-by-step guide** on how to **directly transfer** the JAR file from your Maven server (`xx.xxx.xx.xxx`, `sonar.pem`) to your Tomcat server (`yy.yyy.yy.yyy`, `tomcat.pem`) without using your local machine as an intermediate step:
+
+---
+
+## ✅ **Step 1: Prepare PEM Files and Permissions on Maven Server**
+
+First, log in to your Maven server from your local machine:
+
+```bash
+ssh -i sonar.pem ubuntu@xx.xxx.xx.xxx
+```
+
+Once logged in, create (or upload) your `tomcat.pem` private key file on your Maven server.
+
+You can do this quickly using a text editor (`vim` or `nano`):
+
+```bash
+vim ~/tomcat.pem
+```
+
+Paste the content of your `tomcat.pem` file into this file. Then set secure permissions:
+
+```bash
+chmod 400 ~/tomcat.pem
+```
+
+---
+
+## ✅ **Step 2: Verify SSH Connectivity from Maven to Tomcat**
+
+Check SSH connectivity from Maven server to Tomcat server:
+
+```bash
+ssh -i ~/tomcat.pem ubuntu@yy.yyy.yy.yyy
+```
+
+- **Accept** the SSH host fingerprint if prompted.
+- Ensure successful login, then exit:
+
+```bash
+exit
+```
+
+---
+
+## ✅ **Step 3: Transfer JAR file from Maven Server directly to Tomcat Server**
+
+On your Maven server, use `scp` to transfer the file:
+
+```bash
+scp -i ~/tomcat.pem /path/to/your/jarfile/myapp-1.0.0.jar ubuntu@yy.yyy.yy.yyy:/tmp/
+```
+
+Replace `/path/to/your/jarfile/myapp-1.0.0.jar` with your actual JAR file path.
+
+- **Confirm** the transfer completes successfully.
+
+---
+
+## ✅ **Step 4: SSH into Tomcat Server and move JAR file**
+
+Connect to your Tomcat server from Maven server (still logged in):
+
+```bash
+ssh -i ~/tomcat.pem ubuntu@yy.yyy.yy.yyy
+```
+
+Move the JAR file to Tomcat’s `webapps` directory:
+
+```bash
+sudo mv /tmp/myapp-1.0.0.jar /opt/tomcat/webapps/
+```
+
+Set proper permissions:
+
+```bash
+sudo chown tomcat:tomcat /opt/tomcat/webapps/myapp-1.0.0.jar
+```
+
+---
+
+## ✅ **Step 5: Restart Tomcat Service**
+
+Restart Tomcat to recognize and deploy the new JAR file:
+
+```bash
+sudo systemctl restart tomcat
+```
+
+Check Tomcat status to confirm everything is running correctly:
+
+```bash
+sudo systemctl status tomcat
+```
+
+Review deployment logs:
+
+```bash
+tail -f /opt/tomcat/logs/catalina.out
+```
+
+---
+
+## ✅ **Quick Reference Commands (Summarized):**
+
+On Maven Server:
+
+```bash
+# Add tomcat.pem key to Maven server
+nano ~/tomcat.pem   # Paste content & save
+chmod 400 ~/tomcat.pem
+
+# Transfer JAR directly from Maven server to Tomcat server
+scp -i ~/tomcat.pem /path/to/your/jarfile/myapp-1.0.0.jar ubuntu@yy.yyy.yy.yyy:/tmp/
+
+# SSH into Tomcat server from Maven server
+ssh -i ~/tomcat.pem ubuntu@yy.yyy.yy.yyy
+```
+
+On Tomcat Server:
+
+```bash
+sudo mv /tmp/myapp-1.0.0.jar /opt/tomcat/webapps/
+sudo chown tomcat:tomcat /opt/tomcat/webapps/myapp-1.0.0.jar
+sudo systemctl restart tomcat
+```
+
+---
+
+### 🔐 **Security Recommendation:**
+- After completing your transfer, **delete or securely store** the `tomcat.pem` key from your Maven server if you don't regularly perform this action, to minimize security risks.
+
+```bash
+rm ~/tomcat.pem
+```
+
+---
+
+Your JAR file should now be successfully deployed directly from your Maven server to your Tomcat server!
