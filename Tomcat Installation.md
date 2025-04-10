@@ -100,7 +100,7 @@ This will output the user's information, confirming creation and assigned groups
 uid=1001(tomcat) gid=1001(tomcat) groups=1001(tomcat)
 ```
 
-
+---
 
 ### Step 4: Download and Extract Tomcat
 
