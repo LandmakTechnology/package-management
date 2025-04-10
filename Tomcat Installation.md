@@ -44,7 +44,7 @@ sudo useradd -m -U -d /opt/tomcat -s /bin/false tomcat
 Find the latest stable Tomcat version from the [official website](https://tomcat.apache.org/download-10.cgi). Here, I'll use Tomcat 10.1 as an example:
 
 ```bash
-wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.20/bin/apache-tomcat-10.1.20.tar.gz -P /tmp
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.40/bin/apache-tomcat-10.1.40.tar.gz -P /tmp
 ```
 
 Extract Tomcat to `/opt/tomcat`:
