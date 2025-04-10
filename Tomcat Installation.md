@@ -100,22 +100,7 @@ This will output the user's information, confirming creation and assigned groups
 uid=1001(tomcat) gid=1001(tomcat) groups=1001(tomcat)
 ```
 
-You can also verify the directory permissions:
 
-```bash
-ls -ld /opt/tomcat
-```
-
-Output example:
-```
-drwxr-xr-x 2 tomcat tomcat 4096 Apr  8 10:30 /opt/tomcat
-```
-
-This confirms the directory was created and ownership assigned properly.
-
----
-
-**That's how the command works!**
 ```
 
 ### Step 4: Download and Extract Tomcat
