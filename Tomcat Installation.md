@@ -525,7 +525,8 @@ On your Maven server, use `scp` to transfer the file:
 
 ```bash
 scp -i ~/tomcat.pem /path/to/your/jarfile/myapp-1.0.0.jar ubuntu@yy.yyy.yy.yyy:/tmp/
-sudo scp -i ~/sonar.pem /home/ec2-user/maven-web-application/target/maven-web-application.war ubuntu@35.94.253.224
+scp -i ~/sonar.pem /home/ec2-user/maven-web-application/target/maven-web-application.war ubuntu@35.94.253.224:/tmp/
+
 
 ```
 
