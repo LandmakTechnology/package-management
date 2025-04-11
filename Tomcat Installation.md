@@ -614,5 +614,7 @@ rm ~/tomcat.pem
 ```
 
 ---
-
+```deploy
+http://your-server-ip:8080/maven-web-application/
+```
 Your JAR file should now be successfully deployed directly from your Maven server to your Tomcat server!
