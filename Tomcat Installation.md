@@ -237,7 +237,7 @@ Add users with appropriate roles:
 
 For security, allow access only from your IP.  
 Edit `/opt/tomcat/webapps/manager/META-INF/context.xml`:
-
+Edit '/opt/tomcat10/webapps/host-manager/META-INF/context.xml'
 Replace:
 ```xml
 <Context antiResourceLocking="false" privileged="true">
