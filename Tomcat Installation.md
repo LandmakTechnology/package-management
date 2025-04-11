@@ -302,7 +302,7 @@ You may wish to use standard HTTP ports (e.g., `80`, or secure port `443`).
 Edit the server configuration file:
 
 ```bash
-sudo nano /opt/tomcat/conf/server.xml
+sudo vim /opt/tomcat/conf/server.xml
 ```
 
 Change default connector:
@@ -525,6 +525,8 @@ On your Maven server, use `scp` to transfer the file:
 
 ```bash
 scp -i ~/tomcat.pem /path/to/your/jarfile/myapp-1.0.0.jar ubuntu@yy.yyy.yy.yyy:/tmp/
+sudo scp -i ~/sonar.pem /home/ec2-user/maven-web-application/target/maven-web-application.war ubuntu@35.94.253.224
+
 ```
 
 Replace `/path/to/your/jarfile/myapp-1.0.0.jar` with your actual JAR file path.
