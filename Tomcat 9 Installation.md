@@ -18,7 +18,7 @@ sudo apt upgrade -y
 Tomcat requires Java to run.
 
 ```bash
-sudo apt install default-jdk -y
+sudo apt install openjdk-11-jdk -y
 ```
 
 > 🔍 Confirm Java version:
