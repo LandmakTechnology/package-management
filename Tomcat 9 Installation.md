@@ -42,13 +42,14 @@ Check the latest version from [Apache Tomcat 9 Download Page](https://tomcat.apa
 
 ```bash
 cd /tmp
-wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.85/bin/apache-tomcat-9.0.85.tar.gz
+
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.104/bin/apache-tomcat-9.0.104.tar.gz
 ```
 
 Extract and move to `/opt/tomcat`:
 
 ```bash
-sudo tar -xvzf apache-tomcat-9.0.85.tar.gz -C /opt/tomcat --strip-components=1
+sudo tar -xvzf apache-tomcat-9.0.104.tar.gz -C /opt/tomcat --strip-components=1
 ```
 
 ---
