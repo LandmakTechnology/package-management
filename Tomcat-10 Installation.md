@@ -201,6 +201,7 @@ Open your browser and enter your server’s IP or domain name:
 
 ```
 http://your-server-ip:8080
+http://54.244.96.143:8080/manager/html
 ```
 
 You should see the default Apache Tomcat landing page.
