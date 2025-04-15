@@ -15,4 +15,5 @@ sudo yum install fontconfig java-17-openjdk
 sudo yum install jenkins
 sudo systemctl daemon-reload
 echo "end of jenkins installation"
+sudo yum install net-tools -y 
 sudo su - ec2-user
