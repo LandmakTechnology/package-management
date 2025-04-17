@@ -10,6 +10,7 @@
 # You can execute this script as user-data when launching your EC2 VM.
 sudo timedatectl set-timezone America/New_York
 sudo hostnamectl set-hostname jenkins
+sudo yum install wget -y
 sudo wget -O /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
