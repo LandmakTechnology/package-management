@@ -11,7 +11,7 @@ deployment and provisioning Automation tool maintained by Redhat.
 
 ## **How Ansible works**
   - Ansible works by connecting to remote nodes (hosts) and pushing out small programs, called “Ansible
-    modules” to them.
+    modules” to them..
   - The pushed programs/modules will be executed on remote server by Ansible over SSH and removes them
     when finished.
   - Unlike Puppet or Chef it doesn’t use an agent on the remote host, Instead Ansible uses SSH. It is agentless.
