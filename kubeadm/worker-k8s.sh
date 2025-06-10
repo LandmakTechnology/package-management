@@ -1,7 +1,10 @@
 #!/bin/bash
+# common.sh
+# copy this script and run in all master and worker nodes
 #i1) Switch to root user [ sudo -i]
 
 sudo hostnamectl set-hostname  node1
+sudo -i
 
 #2) Disable swap & add kernel settings
 
@@ -75,16 +78,16 @@ apt-get install -y apt-transport-https ca-certificates curl
 
 # Download the Google Cloud public signing key:
 
-curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
 # Add the Kubernetes apt repository:
 
-echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 # Update apt package index, install kubelet, kubeadm and kubectl, and pin their version:
 
 apt-get update
-apt-get install -y kubelet kubeadm kubectl
+sudo apt install -y kubeadm=1.28.1-1.1 kubelet=1.28.1-1.1 kubectl=1.28.1-1.1
 
 # apt-mark hold will prevent the package from being automatically upgraded or removed.
 
@@ -99,6 +102,6 @@ systemctl enable kubelet.service
 #Copy kubeadm join token from the master and execute in Worker Nodes to join to cluster
 # replace this token with yours
 
-kubeadm join 10.0.0.11:6443 --token 03em5o.agjpy9wbj98izbpn \
+#kubeadm join 10.0.0.11:6443 --token 03em5o.agjpy9wbj98izbpn \
         --discovery-token-ca-cert-hash sha256:92a1cf1e452961a550f05eff32f25500fc9bcfd5d5f771689e8ee21b6a0da243
 
