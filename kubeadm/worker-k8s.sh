@@ -4,7 +4,7 @@
 #i1) Switch to root user [ sudo -i]
 
 sudo hostnamectl set-hostname  node1
-sudo -i
+#sudo -i
 
 #2) Disable swap & add kernel settings
 
@@ -102,6 +102,6 @@ systemctl enable kubelet.service
 #Copy kubeadm join token from the master and execute in Worker Nodes to join to cluster
 # replace this token with yours
 
-#kubeadm join 10.0.0.11:6443 --token 03em5o.agjpy9wbj98izbpn \
-        --discovery-token-ca-cert-hash sha256:92a1cf1e452961a550f05eff32f25500fc9bcfd5d5f771689e8ee21b6a0da243
+kubeadm join 172.31.84.46:6443 --token eloq7t.y0bq97m8825phd41 \
+        --discovery-token-ca-cert-hash sha256:abb2ae087fa457d9bb07bb3c8ac906c77756cf7ff73800eb580c94006afb6a25
 
