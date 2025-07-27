@@ -22,7 +22,7 @@ sudo hostnamectl set-hostname maven
 sudo su - ec2-user
 cd /opt
 sudo yum install wget nano tree unzip git-all  -y
-sudo yum sudo yum install java-21-openjdk-devel  -y
+sudo  yum install java-21-openjdk-devel  -y
 java -version
 git --version
 ```
