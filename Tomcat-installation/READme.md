@@ -14,7 +14,8 @@
 ### Install Java JDK 1.8+ 
 
 ``` sh
-# change hostname to tomcat
+# change hostname to tomcat and change to EST Time-zone
+sudo timedatectl set-timezone America/Toronto
 sudo hostnamectl set-hostname tomcat
 sudo su - ec2-user
 cd /opt 
