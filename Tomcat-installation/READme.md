@@ -2,8 +2,6 @@
 ### **<span style="color:green">Contacts: +1437 215 2483<br> WebSite : <http://mylandmarktech.com/></span>**
 ### **Email: mylandmarktech@gmail.com**
 
-
-
 ## Apache Tomcat Installation And Setup In AWS EC2 Redhat Instance.
 ##### Prerequisite
 + AWS Acccount.
@@ -16,26 +14,35 @@
 ### Install Java JDK 1.8+ 
 
 ``` sh
-# install Java JDK 1.8+ as a pre-requisit for tomcat to run.
+# change hostname to tomcat and change to EST Time-zone
+sudo timedatectl set-timezone America/Toronto
+sudo hostnamectl set-hostname tomcat
+sudo su - ec2-user
 cd /opt 
+# install Java JDK 1.8+ as a pre-requisit for tomcat to run.
 sudo yum install git wget -y
-sudo yum install java-1.8.0-openjdk-devel -y
-# Download tomcat software and extract it.
+sudo yum install java-21-openjdk-devel -y
+# install wget unzip packages.
 sudo yum install wget unzip -y
 ```
-### Install Tomcat version 9.0.64
+## Install Tomcat version 9.0.107
+### Download and extract the tomcat server
 ``` sh
-sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.64/bin/apache-tomcat-9.0.64.tar.gz
-sudo tar -xvf apache-tomcat-9.0.64.tar.gz
-sudo rm apache-tomcat-9.0.64.tar.gz
-sudo mv apache-tomcat-9.0.64 tomcat9
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.107/bin/apache-tomcat-9.0.107.zip
+sudo unzip apache-tomcat-9.0.107.zip
+sudo rm -rf apache-tomcat-9.0.107.zip
+### rename tomcat for good naming convention
+sudo mv apache-tomcat-9.0.107 tomcat9 
+### assign executable permissions to the tomcat home directory
 sudo chmod 777 -R /opt/tomcat9
 sudo chown ec2-user -R /opt/tomcat9
+### start tomcat
 sh /opt/tomcat9/bin/startup.sh
 # create a soft link to start and stop tomcat
+# This will enable us to manage tomcat as a service
 sudo ln -s /opt/tomcat9/bin/startup.sh /usr/bin/starttomcat
 sudo ln -s /opt/tomcat9/bin/shutdown.sh /usr/bin/stoptomcat
-sudo yum update -y
 starttomcat
+sudo su - ec2-user
 ```
 
