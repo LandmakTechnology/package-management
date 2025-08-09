@@ -1,3 +1,13 @@
+#As a good security practice, Nexus is not advised to run nexus service as a root user, 
+# so create a new user called nexus and grant sudo access to manage nexus services as follows.
+# # change  the timezone sonarqube server
+sudo timedatectl set-timezone America/New_York
+sudo hostnamectl set-hostname nexus
+sudo useradd nexus
+# Grand sudo access to nexus user
+sudo echo "nexus ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/nexus
+sudo su - nexus
+
 1. Create a nexus user 
 sudo useradd nexus
 
