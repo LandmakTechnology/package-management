@@ -39,5 +39,7 @@ cd nexus
 cd bin
 sh nexus start
 sh /opt/nexus/nexus start 
+sh /opt/nexus/bin/nexus start
+sh /opt/nexus/bin/nexus status
 
 Access nexus on the browser @ ip:8081
