@@ -35,7 +35,6 @@ java -version
  sudo chown -R nexus:nexus /opt/sonatype-work/
 
 #7. Start nexus using the absolute path to the nexus start-up script
-sh /opt/nexus/nexus start 
 sh /opt/nexus/bin/nexus start
 sh /opt/nexus/bin/nexus status
 
