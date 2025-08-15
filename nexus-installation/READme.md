@@ -27,8 +27,6 @@ sudo echo "nexus ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/nexus
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
 sudo service sshd restart 
 sudo su - nexus
-
-sudo su - nexus
 ```
 
 ### Install Java as a pre-requisit for nexus and other softwares
@@ -36,14 +34,20 @@ sudo su - nexus
 ``` sh
 cd /opt
 sudo yum install wget git nano unzip -y
-sudo yum install java-11-openjdk-devel java-1.8.0-openjdk-devel -y
+sudo wget https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9%2B9/OpenJDK17U-jdk_x64_linux_hotspot_17.0.9_9.tar.gz
+sudo mkdir -p /usr/lib/jvm
+sudo tar -xzf OpenJDK17U-jdk_x64_linux_hotspot_17.0.9_9.tar.gz -C /usr/lib/jvm
+export JAVA_HOME=/usr/lib/jvm/jdk-17.0.9+9
+export PATH=$JAVA_HOME/bin:$PATH
+java -version
 ```
 ### Download nexus software and extract it (unzip).
 ```sh
-sudo wget http://download.sonatype.com/nexus/3/nexus-3.15.2-01-unix.tar.gz 
-sudo tar -zxvf nexus-3.15.2-01-unix.tar.gz
-sudo mv /opt/nexus-3.15.2-01 /opt/nexus
-sudo rm -rf nexus-3.15.2-01-unix.tar.gz
+ cd /opt 
+ sudo wget https://download.sonatype.com/nexus/3/nexus-3.82.0-08-linux-x86_64.tar.gz
+ sudo tar xvz -f nexus-3.82.0-08-linux-x86_64.tar.gz
+ sudo rm -rf /opt/nexus-3.82.0-08-linux-x86_64.tar.gz
+ sudo mv /opt/nexus-3.82.0-08 nexus  
 ```
 
 ## Grant permissions for nexus user to start and manage nexus service
@@ -58,7 +62,7 @@ sudo chmod -R 775 /opt/sonatype-work
 ## # change from #run_as_user="" to [ run_as_user="nexus" ]
 
 ```sh
-echo  'run_as_user="nexus" ' > /opt/nexus/bin/nexus.rc
+#echo  'run_as_user="nexus" ' > /opt/nexus/bin/nexus.rc
 ```
 ##  start nexus SERVICE 
 ```sh
