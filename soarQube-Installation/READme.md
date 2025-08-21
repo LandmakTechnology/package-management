@@ -31,10 +31,13 @@ sudo timedatectl set-timezone America/New_York
 
 ``` sh
 cd /opt
-sudo yum -y install unzip wget git
-sudo yum remove java* -y
-sudo yum install fontconfig java-17-openjdk -y
-
+sudo yum install wget git nano unzip -y
+sudo wget https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9%2B9/OpenJDK17U-jdk_x64_linux_hotspot_17.0.9_9.tar.gz
+sudo mkdir -p /usr/lib/jvm
+sudo tar -xzf OpenJDK17U-jdk_x64_linux_hotspot_17.0.9_9.tar.gz -C /usr/lib/jvm
+export JAVA_HOME=/usr/lib/jvm/jdk-17.0.9+9
+export PATH=$JAVA_HOME/bin:$PATH
+java -version
 
 ```
 ## 2. install sonarqube  
