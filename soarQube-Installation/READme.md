@@ -24,29 +24,29 @@ sudo echo "sonar ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/sonar
 # set hostname for the sonarqube server
 sudo hostnamectl set-hostname sonar 
 sudo su - sonar
-```
-## 1b. Assign password to sonar user
-```sh
-sudo passwd sonar
-```
-## 2. Enable PasswordAuthentication in the server
-```sh
-sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
-sudo service sshd restart
+# change  the timezone sonarqube server
+sudo timedatectl set-timezone America/New_York
 ```
 ### 3. Install Java JDK 1.8+ required for sonarqube to start
 
 ``` sh
 cd /opt
-sudo yum -y install unzip wget git
-sudo yum install  java-11-openjdk-devel
+sudo yum install wget git nano unzip -y
+sudo wget https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9%2B9/OpenJDK17U-jdk_x64_linux_hotspot_17.0.9_9.tar.gz
+sudo mkdir -p /usr/lib/jvm
+sudo tar -xzf OpenJDK17U-jdk_x64_linux_hotspot_17.0.9_9.tar.gz -C /usr/lib/jvm
+export JAVA_HOME=/usr/lib/jvm/jdk-17.0.9+9
+export PATH=$JAVA_HOME/bin:$PATH
+java -version
+
 ```
+## 2. install sonarqube  
 ### 4. Download and extract the SonarqQube Server software.
 ```sh
-sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.8.zip
-sudo unzip sonarqube-7.8.zip
-sudo rm -rf sonarqube-7.8.zip
-sudo mv sonarqube-7.8 sonarqube
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.10.61524.zip
+sudo unzip sonarqube*
+sudo rm -rf *zip
+sudo mv sonarqube* sonarqube
 ```
 
 ## 5. Grant file permissions for sonar user to start and manage sonarQube

@@ -14,17 +14,18 @@
 ### Install Java JDK 1.8+ 
 
 ``` sh
-# change hostname to tomcat
+# change hostname to tomcat and change to EST Time-zone
+sudo timedatectl set-timezone America/Toronto
 sudo hostnamectl set-hostname tomcat
 sudo su - ec2-user
 cd /opt 
 # install Java JDK 1.8+ as a pre-requisit for tomcat to run.
 sudo yum install git wget -y
-sudo yum install java-1.8.0-openjdk-devel -y
+sudo yum install java-21-openjdk-devel -y
 # install wget unzip packages.
 sudo yum install wget unzip -y
 ```
-## Install Tomcat version 9.0.80
+## Install Tomcat version 9.0.107
 ### Download and extract the tomcat server
 ``` sh
 sudo wget  https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.83/bin/apache-tomcat-9.0.83.zip
@@ -32,6 +33,11 @@ sudo unzip apache-tomcat-9.0.83.zip
 sudo rm -rf apache-tomcat-9.0.83.zip
 ### rename tomcat for good naming convention
 sudo mv apache-tomcat-9.0.83.zip  
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.108/bin/apache-tomcat-9.0.108.zip
+sudo unzip apache-tomcat-9.0.108.zip
+sudo rm -rf apache-tomcat-9.0.108.zip
+### rename tomcat for good naming convention
+sudo mv apache-tomcat-9.0.108 tomcat9 
 ### assign executable permissions to the tomcat home directory
 sudo chmod 777 -R /opt/tomcat9
 sudo chown ec2-user -R /opt/tomcat9
@@ -44,4 +50,5 @@ sudo ln -s /opt/tomcat9/bin/shutdown.sh /usr/bin/stoptomcat
 starttomcat
 sudo su - ec2-user
 ```
+
 
