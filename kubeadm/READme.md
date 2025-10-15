@@ -95,7 +95,7 @@ systemctl enable containerd
 #5) Installing kubeadm, kubelet and kubectl
 
 # Update the apt package index and install packages needed to use the Kubernetes apt repository:
-
+ 
 apt-get update
 apt-get install -y apt-transport-https ca-certificates curl
 
