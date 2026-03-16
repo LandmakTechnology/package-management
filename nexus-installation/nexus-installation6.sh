@@ -11,7 +11,7 @@ useradd nexus
 #4 Give sudo access to nexus user
 
 sudo echo "nexus ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/nexus
-sudo su - sonar
+sudo su - nexus
 
 cd /opt
 
@@ -26,7 +26,8 @@ sudo yum install java-11-openjdk-devel java-1.8.0-openjdk-devel -y
 sudo wget http://download.sonatype.com/nexus/3/nexus-3.15.2-01-unix.tar.gz 
 
 sudo tar -zxvf nexus-3.15.2-01-unix.tar.gz
-mv /opt/nexus-3.15.2-01 /opt/nexus
+sudo mv /opt/nexus-3.15.2-01 /opt/nexus
+sudo rm -rf nexus-3.15.2-01-unix.tar.gz 
 
 
 #5 Change the owner and group permissions to /opt/nexus and /opt/sonatype-work directories.

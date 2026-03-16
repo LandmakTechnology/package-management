@@ -1,0 +1,13 @@
+#!/bin/bash
+sudo hostnamectl set-hostname docker
+sudo apt update -y
+sudo apt install docker.io -y
+sudo service docker start
+sudo docker info
+sudo usermod -aG docker ubuntu
+sudo su - ubuntu    
+sudo docker ps    
+# when creating a new ubuntu server look at the following below:
+#ucp - choose any
+#auto assisgn public id - endable (if you see it)
+# storage - config to 16 gb unless company says otherwise
